@@ -1,6 +1,8 @@
 // app/api/spotify/recently-played/route.ts
 import { NextResponse } from 'next/server'
 
+export const dynamic = 'force-dynamic' // Prevent static generation
+
 export async function GET() {
   const client_id = process.env.SPOTIFY_CLIENT_ID
   const client_secret = process.env.SPOTIFY_CLIENT_SECRET
@@ -29,6 +31,11 @@ export async function GET() {
   })
 
   const data = await response.json()
+
+  if (!data?.items) {
+    return NextResponse.json([])
+  }
+
   return NextResponse.json(data.items.map((item: any) => ({
     title: item.track.name,
     artist: item.track.artists.map((artist: any) => artist.name).join(', '),
