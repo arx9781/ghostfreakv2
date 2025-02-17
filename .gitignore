@@ -28,6 +28,10 @@ yarn-error.log*
 
 # env files
 .env
+.env.local
+
+# get-token
+get-token.ts
 
 # vercel
 .vercel
