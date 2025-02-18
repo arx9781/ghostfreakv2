@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { formatDate, getBlogPosts } from 'app/blog/utils'
+import { ScrollShadow } from 'app/components/scroll-shadow'
 
 export function BlogPosts() {
   let allBlogs = getBlogPosts()
@@ -15,32 +16,29 @@ export function BlogPosts() {
   }
 
   return (
-    <div>
-      {allBlogs
-        .sort((a, b) => {
-          if (
-            new Date(a.metadata.publishedAt) > new Date(b.metadata.publishedAt)
-          ) {
-            return -1
-          }
-          return 1
-        })
-        .map((post) => (
-          <Link
-            key={post.slug}
-            className="flex flex-col space-y-1 mb-4"
-            href={`/blog/${post.slug}`}
-          >
-            <div className="w-full flex flex-col md:flex-row space-x-0 md:space-x-2">
-              <p className="text-neutral-600 dark:text-neutral-400 w-[100px] tabular-nums">
+    <div className="grid gap-6">
+      {allBlogs.map((post) => (
+        <Link
+          key={post.slug}
+          href={`/blog/${post.slug}`}
+          className="group p-6 rounded-xl border border-neutral-200 dark:border-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-700 transition-colors"
+        >
+          <div className="flex justify-between items-start">
+            <div>
+              <p className="text-sm text-neutral-500 mb-2">
                 {formatDate(post.metadata.publishedAt, false)}
               </p>
-              <p className="text-neutral-900 dark:text-neutral-100 tracking-tight">
+              <h3 className="text-xl font-medium text-neutral-900 dark:text-neutral-100 group-hover:text-[var(--color-accent)] transition-colors">
                 {post.metadata.title}
-              </p>
+              </h3>
             </div>
-          </Link>
-        ))}
+            <div className="text-neutral-400 group-hover:text-[var(--color-accent)] transition-colors">
+              →
+            </div>
+          </div>
+        </Link>
+      ))}
+      <ScrollShadow />
     </div>
   )
 }

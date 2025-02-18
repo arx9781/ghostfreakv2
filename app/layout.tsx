@@ -49,11 +49,16 @@ export default function RootLayout({
         GeistMono.variable
       )}
     >
-      <body className="antialiased max-w-xl mx-4 mt-8 lg:mx-auto">
+      <body className="antialiased max-w-2xl mx-4 mt-8 lg:mx-auto">
         <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
-          <Navbar />
-          {children}
-          <Footer />
+          <div className="relative">
+            <div className="absolute inset-0 
+              bg-[var(--color-bg-pattern-light)] dark:bg-[var(--color-bg-pattern-dark)] 
+              [background-size:16px_16px] opacity-20 -z-10" />
+            <Navbar />
+            {children}
+          </div>
+          {/* <Footer /> */}
           <Analytics />
           <SpeedInsights />
         </main>

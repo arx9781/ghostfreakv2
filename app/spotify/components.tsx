@@ -6,8 +6,15 @@ export function CurrentlyPlaying() {
   const { data } = useSWR('/api/spotify/now-playing', fetcher)
 
   return (
-    <div className="p-4 border rounded-lg dark:border-neutral-800">
-      <h2 className="mb-4 text-xl font-semibold">Currently Playing</h2>
+    <div className="p-6 bg-neutral-100/50 dark:bg-neutral-900/50 rounded-xl border border-neutral-200 dark:border-neutral-800 backdrop-blur-sm">
+      <div className="flex items-center justify-between mb-4">
+        <h2 className="text-lg font-medium">Now Playing</h2>
+        <div className="flex space-x-2">
+          <div className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse" />
+          <div className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse delay-100" />
+          <div className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse delay-200" />
+        </div>
+      </div>
       {data ? (
         data?.isPlaying ? (
           <div className="flex items-center space-x-4">
@@ -46,12 +53,13 @@ export function RecentlyPlayed() {
   const { data } = useSWR('/api/spotify/recently-played', fetcher)
 
   return (
-    <div className="p-4 border rounded-lg dark:border-neutral-800">
+    <div className="p-4 border rounded-lg dark:border-neutral-800 
+      hover:border-[var(--color-secondary)] transition-colors">
       <h2 className="mb-4 text-xl font-semibold">Recently Played</h2>
       {data ? (
         data?.map((track: any, index: number) => (
           <div key={track.songUrl} className="flex items-center space-x-4 py-2">
-            <span className="text-neutral-600 dark:text-neutral-400">
+            <span className="text-[var(--color-accent)] font-medium">
               {index + 1}
             </span>
             <img
@@ -89,7 +97,10 @@ const fetcher = (url: string) => fetch(url).then((res) => res.json())
 function CurrentlyPlayingSkeleton() {
   return (
     <div className="flex items-center space-x-4">
-      <div className="w-16 h-16 rounded bg-neutral-200 dark:bg-neutral-800 animate-pulse"></div>
+      <div className="w-16 h-16 rounded 
+        bg-gradient-to-r from-neutral-200/50 to-neutral-300/50 
+        dark:from-neutral-800/50 dark:to-neutral-700/50 
+        animate-pulse" />
       <div>
         <div className="w-48 h-4 rounded bg-neutral-200 dark:bg-neutral-800 animate-pulse mb-1"></div>
         <div className="w-32 h-3 rounded bg-neutral-200 dark:bg-neutral-800 animate-pulse"></div>

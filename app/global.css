@@ -1,11 +1,16 @@
 @import 'tailwindcss';
 
 ::selection {
-  background-color: #47a3f3;
-  color: #fefefe;
+  background-color: #FF70A6;
+  color: #000;
 }
 
 :root {
+  --color-surface: 255 255 255;
+  --color-primary: 17 17 17;
+  --color-accent: 99 102 241;
+  --color-bg-pattern-light: radial-gradient(#f0f0f0_1px,transparent_1px);
+  --color-bg-pattern-dark: radial-gradient(#1a1a1a_1px,transparent_1px);
   --sh-class: #2d5e9d;
   --sh-identifier: #354150;
   --sh-sign: #8996a3;
@@ -19,10 +24,14 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
+    --color-surface: 23 23 23;
+    --color-primary: 245 245 245;
     --sh-class: #4c97f8;
     --sh-identifier: white;
     --sh-keyword: #f47067;
     --sh-string: #0fa295;
+    /* Maintain accent colors in dark mode */
+    --color-accent: #FF9770;
   }
   html {
     color-scheme: dark;
@@ -48,7 +57,7 @@ html {
 }
 
 .prose a {
-  @apply underline transition-all decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em];
+  @apply text-[var(--color-primary)] hover:opacity-75 transition-opacity;
 }
 
 .prose .anchor:after {
@@ -161,4 +170,11 @@ table {
   50% {
     opacity: 0.5;
   }
+}
+
+/* New gradient text utility */
+.bg-gradient-text {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
 }
