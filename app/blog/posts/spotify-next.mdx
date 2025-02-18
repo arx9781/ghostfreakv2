@@ -1,9 +1,106 @@
 ---
-title: 'Spotify & Next.js: A Step-by-Step Guide'
-publishedAt: '2025-01-28'
-summary: 'A guide on how to integrate Spotify into your Next.js app.'
+title: 'Displaying Spotify Stats in Your Next.js App'
+publishedAt: '2025-02-17'
+summary: 'A step-by-step guide on integrating Spotify API to showcase your listening habits in a Next.js application.'
 ---
 
-Spotify is a popular music streaming service that offers a wide range of music genres and artists. Integrating Spotify into your Next.js app can provide a seamless and enjoyable user experience, allowing users to easily access their favorite tracks and discover new music.
+## Introduction
 
-In this guide, we'll explore how to integrate Spotify into a Next.js app using the Spotify Web API. We'll cover topics such as authentication, fetching user data, and displaying playlists and tracks.
+Want to showcase your Spotify listening habits on your Next.js portfolio or personal website? This guide walks you through the process of integrating the Spotify Web API to display your recently played tracks. We'll cover everything from setting up your Spotify developer account to fetching and displaying the data in your Next.js app.
+
+## Prerequisites
+
+*   A Spotify account
+*   A Next.js project (basic knowledge of React is assumed)
+*   Node.js and npm or yarn installed
+
+## Step 1: Create a Spotify Developer App
+
+1.  Go to the [Spotify Developer Dashboard](https://developer.spotify.com/dashboard/) and log in with your Spotify account.
+2.  Click "Create an App".
+3.  Fill in the required details (App Name, App Description, etc.).
+4.  **Important:** Set the Redirect URI to `http://localhost:3000/api/spotify/callback` (or your development URL).  This is crucial for the authentication flow.  You'll also need to set the redirect URI in your production environment to your deployed URL (e.g. `https://your-domain.com/api/spotify/callback`).
+5.  Once the app is created, you'll find your **Client ID** and **Client Secret**.  Keep these safe!
+
+## Step 2: Obtain Refresh Token
+
+You'll need a refresh token to get new access tokens. Since the Spotify API uses the Authorization Code Flow, you'll need to perform the following steps:
+
+1.  **Authorization Request:** Construct an authorization URL:
+    ```
+    https://accounts.spotify.com/authorize?client_id=YOUR_CLIENT_ID&response_type=code&redirect_uri=YOUR_REDIRECT_URI&scope=user-read-recently-played user-top-read user-read-currently-playing&state=some-state-of-your-choice    ```
+
+    Replace `YOUR_CLIENT_ID` with your Client ID and `YOUR_REDIRECT_URI` with your Redirect URI (e.g., `http://localhost:3000/api/spotify/callback`).  The `scope` parameter specifies the permissions you're requesting.  `user-read-recently-played`, `user-top-read`, and `user-read-currently-playing` are needed for the examples in this guide.  The `state` parameter is for security and should be a randomly generated string.
+
+2.  **User Authorization:** Open the constructed URL in your browser. You'll be prompted to log in to Spotify and authorize your application.
+
+3.  **Callback Handling:** After authorization, Spotify will redirect you to your Redirect URI with an authorization code in the URL (e.g., `http://localhost:3000/api/spotify/callback?code=AUTHORIZATION_CODE&state=some-state-of-your-choice`).
+
+4.  **Token Request:**  You'll need to exchange this authorization code for an access token and refresh token.  You can use a tool like `curl` or `Postman` for this, or implement a temporary API endpoint in your Next.js app.  Here's how you can do it with `curl`:
+    ```bash
+    curl -X POST \
+      -H "Content-Type: application/x-www-form-urlencoded" \
+      -H "Authorization: Basic BASE64_ENCODED_CLIENT_ID_AND_SECRET" \
+      -d "grant_type=authorization_code&code=AUTHORIZATION_CODE&redirect_uri=YOUR_REDIRECT_URI" \
+      https://accounts.spotify.com/api/token    ```
+
+    *   Replace `AUTHORIZATION_CODE` with the code you received in the callback.
+    *   Replace `YOUR_REDIRECT_URI` with your Redirect URI.
+    *   Replace `BASE64_ENCODED_CLIENT_ID_AND_SECRET` with the Base64 encoded string of your Client ID and Client Secret (e.g., `Buffer.from('YOUR_CLIENT_ID:YOUR_CLIENT_SECRET').toString('base64')` in Node.js).
+
+    The response will contain `access_token`, `refresh_token`, and `expires_in`.  **Store the `refresh_token` securely.**
+
+## Step 3: Set Up Environment Variables
+
+Create a `.env.local` file in your Next.js project and add the following:
+
+```
+SPOTIFY_CLIENT_ID=YOUR_CLIENT_ID
+SPOTIFY_CLIENT_SECRET=YOUR_CLIENT_SECRET
+SPOTIFY_REFRESH_TOKEN=YOUR_REFRESH_TOKEN
+```
+
+Replace the placeholders with your actual credentials.  **Never commit your `.env.local` file to your repository!**
+
+## Step 4: Create API Endpoints
+
+Create the following API endpoints in your `app/api/spotify` directory.
+
+### `app/api/spotify/now-playing/route.ts`
+
+This endpoint fetches the currently playing song.
+typescript:app/api/spotify/now-playing/route.ts
+
+### `app/api/spotify/recently-played/route.ts`
+
+This endpoint fetches recently played tracks.
+typescript:app/api/spotify/recently-played/route.ts
+
+
+## Step 5: Create React Components
+
+Create React components to display the data.
+
+### `app/spotify/components.tsx`
+typescript:app/spotify/components.tsx
+
+
+## Step 6: Create a Spotify Page
+
+Create a page to display the components.
+
+### `app/spotify/page.tsx`
+typescript:app/spotify/page.tsx
+
+
+## Step 7: Add the Spotify Page to your Navbar
+
+Add a link to the Spotify page in your navigation.
+
+### `app/components/nav.tsx`
+typescript:app/components/nav.tsx
+
+
+## Conclusion
+
+You have now successfully integrated the Spotify API into your Next.js application! You can further customize the components to display more information, such as top artists or playlists. Remember to handle errors gracefully and protect your API keys.

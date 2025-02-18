@@ -1,0 +1,104 @@
+---
+title: 'Lunarvim on Windows: Neovim for Newbies!'
+publishedAt: '2025-01-08'
+summary: 'A comprehensive guide on how to install and get started with Lunarvim on Windows'
+tags: ['neovim', 'lunarvim', 'windows', 'development', 'ide']
+---
+
+# What is Lunarvim?
+
+Lunarvim is an IDE layer for Neovim that comes pre-configured with everything you need to get started. While it can serve as a foundation for building your own configuration, it's already feature-rich enough that adding more customizations might unnecessarily complicate things.
+
+I recommend using Lunarvim as an introduction to what a Neovim configuration can become. Once you're comfortable with Lua and ready to truly customize Neovim to your preferences, you can uninstall Lunarvim and configure the init file yourself. **Note: Custom configuration is beyond the scope of this guide.**
+
+While this tutorial focuses on Windows, the process is similar for UNIX-based operating systems like Mac and Linux. If there's enough interest, I'll create a separate Linux tutorial.
+
+## Prerequisites
+
+First, you'll need to install several dependencies. Here's how to get started:
+
+1. Open Terminal with Administrator privileges
+
+2. Install Chocolatey (Windows package manager)
+   ```powershell
+   # Visit my blog for detailed Chocolatey installation instructions
+   # Link: [How to Install Chocolatey]
+   ```
+
+3. Install Neovim using Chocolatey:
+   ```powershell
+   choco install neovim
+   ```
+
+4. Configure Neovim:
+   - Extract the Neovim zip file
+   - Locate the `bin` folder
+   - Add the path to your environment variables
+   - Verify installation by running:
+   ```powershell
+   nvim
+   ```
+   > **Tip**: To exit Neovim, type `:q` and press Enter
+
+5. Install required dependencies:
+   ```powershell
+   choco install git make node npm pip python cargo ripgrep -y
+   ```
+   > The `-y` flag automatically answers "yes" to all prompts
+
+6. Verify installations:
+   ```powershell
+   git --version
+   node --version
+   npm --version
+   python --version
+   cargo --version
+   rg --version
+   ```
+
+## Installing Lunarvim
+
+Now that we have all dependencies installed, let's set up Lunarvim:
+
+```powershell
+# Install Lunarvim using the Windows installation script
+# Copy the installation command from the Windows tab on Lunarvim's website
+```
+
+To test the installation, open a file with Lunarvim:
+```powershell
+lvim c:/javascript/palindrome.js
+```
+
+## Basic Usage
+
+Here are some essential commands to get you started:
+
+// ... existing code ...
+## Basic Usage
+
+Here are some essential commands to get you started:
+
+```
+| Mode     | Command | Description                 |
+| -------  | ------  | --------------------------  |
+| Normal   | `i`     | Enter insert mode           |
+| Insert   | `Esc`   | Return to normal mode       |
+| Normal   | `:w`    | Save changes                |
+| Normal   | `:q`    | Quit Lunarvim               |
+| Normal   | `:wq`   | Save and quit               |
+```
+
+Since Lunarvim is a keyboard-driven editor, it's crucial to learn these basic commands. I recommend exploring Neovim tutorials to become more proficient with the editor. Unlike traditional IDEs like VSCode, Lunarvim keeps your hands on the keyboard, potentially improving your typing speed and efficiency.
+
+## Next Steps
+
+- Learn basic Neovim commands and keyboard shortcuts
+- Explore Lunarvim's built-in features
+- Join the Neovim community for support and tips
+- Practice using the keyboard-driven interface
+
+## References
+
+- [Official Lunarvim Installation Guide](https://www.lunarvim.org/docs/installation)
+- [Neovim Documentation](https://neovim.io/doc/)

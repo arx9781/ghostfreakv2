@@ -27,5 +27,10 @@
   },
   "devDependencies": {
     "ts-node": "^10.9.2"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@vercel/speed-insights"
+    ]
   }
 }

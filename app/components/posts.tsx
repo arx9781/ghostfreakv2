@@ -4,6 +4,16 @@ import { formatDate, getBlogPosts } from 'app/blog/utils'
 export function BlogPosts() {
   let allBlogs = getBlogPosts()
 
+  if (!allBlogs) {
+    return (
+      <div>
+        {[...Array(3)].map((_, i) => (
+          <BlogPostSkeleton key={i} />
+        ))}
+      </div>
+    )
+  }
+
   return (
     <div>
       {allBlogs
@@ -31,6 +41,17 @@ export function BlogPosts() {
             </div>
           </Link>
         ))}
+    </div>
+  )
+}
+
+function BlogPostSkeleton() {
+  return (
+    <div className="flex flex-col space-y-1 mb-4">
+      <div className="w-full flex flex-col md:flex-row space-x-0 md:space-x-2">
+        <div className="w-[100px] h-4 bg-neutral-200 dark:bg-neutral-800 animate-pulse rounded"></div>
+        <div className="flex-1 h-4 bg-neutral-200 dark:bg-neutral-800 animate-pulse rounded"></div>
+      </div>
     </div>
   )
 }

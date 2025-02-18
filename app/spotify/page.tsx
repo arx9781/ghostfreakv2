@@ -1,5 +1,5 @@
 // app/spotify/page.tsx
-import { CurrentlyPlaying, TopTracks, RecentlyPlayed } from './components'
+import { CurrentlyPlaying, RecentlyPlayed } from './components'
 
 export default function SpotifyPage() {
   return (
@@ -10,7 +10,6 @@ export default function SpotifyPage() {
       <div className="space-y-10">
         <CurrentlyPlaying />
         <RecentlyPlayed />
-        <TopTracks />
       </div>
     </section>
   )

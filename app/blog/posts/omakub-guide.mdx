@@ -1,0 +1,226 @@
+---
+title: 'Getting Started with Omakub: A Simple Kubernetes Alternative'
+publishedAt: '2025-02-18'
+summary: 'A comprehensive guide to understanding and installing Omakub, a lightweight alternative to Kubernetes'
+tags: ['kubernetes', 'omakub', 'containers', 'devops', 'orchestration']
+---
+
+# What is Omakub?
+
+Omakub is a lightweight, open-source container orchestration system designed as a simpler alternative to Kubernetes. While Kubernetes offers a comprehensive solution for container orchestration at scale, Omakub focuses on providing essential features for smaller deployments and development environments.
+
+## Key Features
+
+- Simplified container orchestration
+- Built-in service discovery
+- Basic load balancing
+- Straightforward configuration
+- Minimal resource requirements
+- Single-node and small cluster support
+- Compatible with Docker containers
+- REST API for management
+
+## Why Choose Omakub?
+
+Omakub is ideal for:
+- Development environments
+- Small production workloads
+- Learning container orchestration
+- Testing microservices
+- Single-node deployments
+
+## Prerequisites
+
+Before installing Omakub, ensure you have:
+
+```bash
+# Required software versions
+Docker >= 20.10
+Python >= 3.8
+pip >= 21.0
+```
+
+## Installation
+
+### Linux Installation
+
+1. First, install the system dependencies:
+
+```bash
+# Ubuntu/Debian
+sudo apt-get update
+sudo apt-get install -y \
+    python3-pip \
+    python3-venv \
+    docker.io
+
+# CentOS/RHEL
+sudo yum install -y \
+    python3-pip \
+    python3-virtualenv \
+    docker-ce
+```
+<br/>
+2. Install Omakub using pip:
+
+```bash
+pip install omakub
+```
+<br/>
+3. Initialize Omakub:
+
+```bash
+omakub init
+```
+
+### Configuration
+
+Create a basic configuration file at `~/.omakub/config.yaml`:
+
+```yaml
+cluster:
+  name: my-cluster
+  host: 0.0.0.0
+  port: 8080
+
+storage:
+  type: local
+  path: /var/lib/omakub
+
+networking:
+  subnet: 172.16.0.0/16
+  service_cidr: 10.96.0.0/12
+
+logging:
+  level: info
+  output: /var/log/omakub/omakub.log
+```
+
+## Basic Usage
+
+### Starting Omakub
+
+```bash
+# Start the Omakub daemon
+omakub start
+
+# Verify the service is running
+omakub status
+```
+
+### Deploying Applications
+
+1. Create a deployment file (`deployment.yaml`):
+
+```yaml
+apiVersion: omakub/v1
+kind: Deployment
+metadata:
+  name: my-app
+spec:
+  replicas: 2
+  container:
+    image: nginx:latest
+    ports:
+      - containerPort: 80
+    resources:
+      memory: "128Mi"
+      cpu: "100m"
+```
+
+<br/>
+2. Apply the deployment:
+
+```bash
+omakub apply -f deployment.yaml
+```
+
+### Managing Deployments
+
+```bash
+# List all deployments
+omakub list deployments
+
+# Scale a deployment
+omakub scale deployment my-app --replicas=3
+
+# Delete a deployment
+omakub delete deployment my-app
+```
+
+## Common Commands
+
+```
+| Command | Description |
+|---------|------------|
+| `omakub init` | Initialize Omakub |
+| `omakub start` | Start Omakub daemon |
+| `omakub stop` | Stop Omakub daemon |
+| `omakub status` | Check service status |
+| `omakub list` | List resources |
+| `omakub logs` | View logs |
+| `omakub version` | Show version info |
+```
+
+## Best Practices
+
+1. **Resource Management**
+   ```yaml
+   # Always specify resource limits
+   resources:
+     limits:
+       memory: "256Mi"
+       cpu: "200m"
+     requests:
+       memory: "128Mi"
+       cpu: "100m"
+   ```
+
+2. **Health Checks**
+   ```yaml
+   # Add health checks to your deployments
+   healthCheck:
+     httpGet:
+       path: /health
+       port: 8080
+     initialDelaySeconds: 10
+     periodSeconds: 30
+   ```
+
+## Troubleshooting
+
+Common issues and solutions:
+
+1. **Service Won't Start**
+   ```bash
+   # Check logs
+   sudo journalctl -u omakub
+   
+   # Verify permissions
+   sudo chown -R $USER:$USER ~/.omakub
+   ```
+
+2. **Container Network Issues**
+   ```bash
+   # Reset network
+   omakub network reset
+   
+   # Check network status
+   omakub network status
+   ```
+
+## Next Steps
+
+- Explore the REST API
+- Set up monitoring
+- Configure custom networking
+- Implement CI/CD pipelines
+- Join the community
+
+## Resources
+
+- [Official Documentation](https://omakub.dev)
+- [GitHub Repository](https://github.com/omakub/omakub)
+- [Community Forums](https://community.omakub.dev)
+
+*Note: This guide covers Omakub version 1.x. Features and commands may vary in other versions.*
