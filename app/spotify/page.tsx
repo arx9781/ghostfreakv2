@@ -1,6 +1,11 @@
 // app/spotify/page.tsx
 import { CurrentlyPlaying, RecentlyPlayed } from './components'
 
+export const metadata = {
+  title: 'spotify stats',
+  description: 'My Spotify Stats',
+}
+
 export default function SpotifyPage() {
   return (
     <section>
