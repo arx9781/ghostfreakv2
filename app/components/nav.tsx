@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { GeistMono } from 'geist/font/mono'
 
 const navItems = {
   '/': { name: 'home' },
@@ -20,7 +21,7 @@ export function Navbar() {
   const [hoveredPath, setHoveredPath] = useState(pathname);
 
   return (
-    <div className="border border-neutral-800/90 p-[0.4rem] rounded-lg mb-1 sticky top-4 z-[100] bg-neutral-900/80 backdrop-blur-md">
+    <div className="border dark:border-neutral-800/90 p-[0.4rem] rounded-lg mb-1 sticky top-4 z-[100] dark:bg-neutral-900/80 backdrop-blur-md bg-neutral border-neutral-200/90 bg-neutral-100/80">
       <nav className="flex gap-2 relative justify-start w-full z-[100]  rounded-lg">
         {Object.entries(navItems).map(([path, item], index) => {
           const isActive = path === pathname;
@@ -30,7 +31,7 @@ export function Navbar() {
               key={path}
               className={`px-4 py-2 rounded-md text-sm lg:text-base relative no-underline duration-300 ease-in ${
                 isActive ? "text-zinc-100" : "text-zinc-400"
-              }`}
+              } ${GeistMono.variable}`}
               data-active={isActive}
               href={path}
               onMouseOver={() => setHoveredPath(path)}

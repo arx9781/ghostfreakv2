@@ -1,5 +1,10 @@
 @import 'tailwindcss';
 
+@theme {
+  --font-mono: 'Geist Mono', monospace;
+  --font-sans: 'Geist Sans', sans-serif;
+}
+
 ::selection {
   background-color: #FF70A6;
   color: #000;
