@@ -49,16 +49,30 @@ export default function RootLayout({
         GeistMono.variable
       )}
     >
-      <body className="antialiased max-w-2xl mx-4 mt-8 lg:mx-auto">
-        <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
-          <div className="relative">
+      <body className="antialiased max-w-2xl mx-4 mt-4 lg:mx-auto text-base">
+        <main className="flex-auto min-w-0 mt-4 flex flex-col px-2 md:px-0">
+          <div className="relative w-full">
             <div className="absolute inset-0 
               bg-[var(--color-bg-pattern-light)] dark:bg-[var(--color-bg-pattern-dark)] 
               [background-size:16px_16px] opacity-20 -z-10" />
+              <section className="w-full flex gap-4 justify-start mb-6 p-2">
+            <div>
+              <img
+                src="https://avatars.githubusercontent.com/u/68690233?s=100&v=4"
+                alt="avatar"
+                className="w-12 h-12 rounded-full shadow-lg grayscale hover:grayscale-0 duration-300"
+              />
+            </div>
+            <div className="flex flex-col gap-2 justify-center">
+              {/* <h2 className="mb-0 text-zinc-100 font-bold">Aditya</h2>*/}
+            </div>
+          </section>
             <Navbar />
+            <div className='my-8'>
             {children}
+            </div>
           </div>
-          {/* <Footer /> */}
+          <Footer />
           <Analytics />
           <SpeedInsights />
         </main>
