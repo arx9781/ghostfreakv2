@@ -1,13 +1,20 @@
 @import 'tailwindcss';
 
 @theme {
-  --font-mono: 'Geist Mono', monospace;
-  --font-sans: 'Geist Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-sans: 'Inter', sans-serif;
 }
 
 ::selection {
-  background-color: #FF70A6;
-  color: #000;
+  background-color: rgb(var(--color-primary));
+  color: rgb(var(--color-surface));
+}
+
+@media (prefers-color-scheme: dark) {
+  ::selection {
+    background-color: #fff;
+    color: #000;
+  }
 }
 
 html {

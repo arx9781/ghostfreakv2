@@ -1,3 +1,7 @@
+import { JetBrains_Mono } from "next/font/google";
+
+const jetBrainsMono = JetBrains_Mono({ subsets: ["latin"] });
+
 function ArrowIcon() {
   return (
     <svg
@@ -12,15 +16,36 @@ function ArrowIcon() {
         fill="currentColor"
       />
     </svg>
-  )
+  );
 }
 
 export default function Footer() {
   return (
     <footer className="mb-16">
-      <p className="mt-8 text-neutral-600 dark:text-neutral-300">
-        © {new Date().getFullYear()} MIT Licensed
-      </p>
+      <div className="flex justify-between items-start md:items-center mt-8 gap-4 text-sm md:flex-row flex-col-reverse">
+        {/* <div className="flex items-center space-x-2">
+          <span
+            className={`text-neutral-600 dark:text-neutral-300 ${jetBrainsMono.className} border-neutral-800 rounded-md border-1 p-1`}
+          >
+            {new Date().toLocaleTimeString([], {
+              hour: "2-digit",
+              minute: "2-digit",
+              second: "2-digit",
+              hour12: false,
+            })}
+          </span>
+        </div> */}
+
+        <p className="text-neutral-600 dark:text-neutral-300 textt-sm md:text-base">
+          © {new Date().getFullYear()} MIT Licensed
+        </p>
+        <div className="flex items-center space-x-2">
+          <div className="h-3 w-3 rounded-full bg-blue-500 animate-pulse" />
+          <span className="text-neutral-600 dark:text-neutral-300">
+            All systems normal
+          </span>
+        </div>
+      </div>
     </footer>
-  )
+  );
 }

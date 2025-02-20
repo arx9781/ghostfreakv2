@@ -2,7 +2,6 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { GeistMono } from 'geist/font/mono'
 
 const navItems = {
   '/': { name: 'home' },
@@ -25,13 +24,12 @@ export function Navbar() {
       <nav className="flex gap-2 relative justify-start w-full z-[100]  rounded-lg">
         {Object.entries(navItems).map(([path, item], index) => {
           const isActive = path === pathname;
-          
+
           return (
             <Link
               key={path}
-              className={`px-4 py-2 rounded-md text-sm lg:text-base relative no-underline duration-300 ease-in ${
-                isActive ? "text-zinc-100" : "text-zinc-400"
-              } ${GeistMono.variable}`}
+              className={`px-4 py-2 rounded-md text-sm lg:text-base relative no-underline duration-300 ease-in ${isActive ? "text-neutral-100" : "text-neutral-400"
+                } }`}
               data-active={isActive}
               href={path}
               onMouseOver={() => setHoveredPath(path)}
@@ -40,7 +38,7 @@ export function Navbar() {
               <span>{item.name}</span>
               {path === hoveredPath && (
                 <motion.div
-                  className="absolute bottom-0 left-0 h-full bg-neutral-800/80 rounded-md -z-10"
+                  className="absolute bottom-0 left-0 h-full bg-neutral-50/80 dark:bg-neutral-800/80 rounded-md -z-10"
                   layoutId="navbar"
                   aria-hidden="true"
                   style={{
