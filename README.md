@@ -34,3 +34,6 @@ A portfolio and personal website built with Next.js.
 2.  Install dependencies: `npm install` or `yarn install` or `pnpm install`.
 3.  Configure environment variables (especially for Spotify API integration, see `app/api/spotify/now-playing/route.ts` and `app/api/spotify/recently-played/route.ts`).
 4.  Run the development server: `npm run dev` or `yarn dev` or `pnpm dev`.
+
+**Assets Used**
+1. Wavy line by Made by Made from <a href="https://thenounproject.com/browse/icons/term/wavy-line/" target="_blank" title="Wavy line Icons">Noun Project</a> (CC BY 3.0)

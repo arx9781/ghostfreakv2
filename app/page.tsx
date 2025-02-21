@@ -19,7 +19,7 @@ export default function Page() {
   return (
     <section className="space-y-12">
       <div
-        className={`space-y-4 border-b border-neutral-200 dark:border-neutral-800 pb-8 ${jetBrainsMono.className}`}
+        className={`space-y-4 ${jetBrainsMono.className}`}
       >
         {/* <h1 className="text-4xl font-medium tracking-tight bg-gradient-to-r from-neutral-900/80 to-neutral-600/80 dark:from-neutral-100 dark:to-neutral-400 bg-clip-text text-transparent">
           aditya roychoudhary
@@ -48,8 +48,8 @@ export default function Page() {
         </p>
       </div>
       <div>
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-2xl font-medium">Currently Playing</h2>
+        <CurrentlyPlaying />
+        <div className="flex items-center justify-end mt-4">
           <Link
             href="/spotify"
             className={`text-sm text-neutral-600 dark:text-neutral-400 hover:underline ${jetBrainsMono.className} font-bold`}
@@ -57,20 +57,58 @@ export default function Page() {
             View all →
           </Link>
         </div>
-        <CurrentlyPlaying />
+      </div>
+      <div>
+        <div className="space-y-4 border-b-1 border-neutral-200 dark:border-neutral-800 pb-10">
+          <h2 className={`text-2xl font-medium tracking-tight ${jetBrainsMono.className}`}>More about me</h2>
+          <p className="text-neutral-600 dark:text-neutral-400 max-w-2xl leading-relaxed">
+            An almost{" "}
+            <span className="relative group border-b-1 border-neutral-600 hover:border-neutral-400 cursor-pointer">
+              21 y/o
+              <span className="absolute z-10 bottom-full mb-2 left-1/2 transform -translate-x-1/2 backdrop-blur-lg bg-neutral-200/20 dark:bg-neutral-800/20 text-neutral-800 dark:text-neutral-200 text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex space-x-1">
+                <span>20th</span>
+                <span>April</span>
+              </span>
+            </span>{" "}
+            software designer and developer based in Mumbai, India. I've always been
+            fascinated by the web's diverse designs, styles, and languages for creating
+            and sharing information. This fascination inspired me to pursue a career in{" "}
+            <span className="font-bold">Software Design</span>, where I can contribute
+            to the web's{" "}
+            <span className="font-bold">innovation</span>.
+          </p>
+          <p className="text-neutral-600 dark:text-neutral-400 max-w-2xl leading-relaxed">
+            Outside of my professional life, I enjoy playing games and occasionally
+            "touching grass." I primarily play{" "}
+            <span className="font-bold">FPS</span> and <span className="font-bold">MOBA</span>{" "}
+            games like{" "}
+            <span className="border-b-1 border-neutral-600 hover:border-neutral-400 cursor-pointer">
+              Mobile Legends
+            </span>{" "}
+            and{" "}
+            <span className="cursor-crosshair hover:text-red-800 border-b-1 border-neutral-600 hover:border-red-800">
+              Valorant
+            </span>
+            . I'm also an avid anime watcher, with{" "}
+            <span className="font-bold">space opera</span> being my favorite genre. If
+            you're curious about my taste, go through{" "}
+            <a href="#" className="text-neutral-800 dark:text-neutral-200 hover:underline">
+              myanimelist
+            </a>
+          </p>
+        </div>
       </div>
       <div className="space-y-4">
-        <div className="flex items-center justify-between">
-          <h2 className="text-2xl font-medium">Latest Posts</h2>
+        <div className="grid gap-6 md:grid-cols-1">
+          <BlogPosts />
+        </div>
+        <div className="flex items-center justify-end">
           <Link
             href="/blog"
             className={`text-sm text-neutral-600 dark:text-neutral-400 hover:underline ${jetBrainsMono.className} font-bold`}
           >
-            View archive →
+            View blogs →
           </Link>
-        </div>
-        <div className="grid gap-6 md:grid-cols-1">
-          <BlogPosts />
         </div>
       </div>
       <ScrollShadow />

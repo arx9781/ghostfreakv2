@@ -21,7 +21,7 @@ function ArrowIcon() {
 
 export default function Footer() {
   return (
-    <footer className="mb-16">
+    <footer className="mb-28 mt-16 border-t-1 dark:border-neutral-800 border-neutral-300">
       <div className="flex justify-between items-start md:items-center mt-8 gap-4 text-sm md:flex-row flex-col-reverse">
         {/* <div className="flex items-center space-x-2">
           <span

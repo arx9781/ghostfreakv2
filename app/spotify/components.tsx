@@ -12,26 +12,22 @@ export function CurrentlyPlaying() {
     <div className="p-6 bg-neutral-100/50 dark:bg-neutral-900/50 rounded-xl border border-neutral-200 dark:border-neutral-800 backdrop-blur-sm">
       <div className="flex items-center justify-between mb-4">
         <div>
-        <h2 className="text-lg font-medium">Now Playing</h2>
-        {data?.isPlaying ? (
-          <div className="flex items-center space-x-1">
-            <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-            <svg width="24" height="24" viewBox="0 0 24 24" className="text-green-500 w-4 h-4">
-              <path
-                fill="currentColor"
-                d="M6 14h2v-4H6v4zm4 4h2V6h-2v12zm-8-8h2v-4H2v4zm4 4h2v-4H6v4zm4 4h2v-4h-2v4zm4-8h2v-4h-2v4zm4 4h2v-4h-2v4z"
-                className="animate-wave origin-bottom transform-gpu"
-              />
-            </svg>
-          </div>
-        ) : (
-          <div className="flex items-center space-x-1">
-            <div className="w-2 h-2 rounded-full bg-neutral-400 animate-pulse" />
-            <svg width="24" height="24" viewBox="0 0 24 24" className="text-neutral-400 w-4 h-4">
-              <line x1="4" y1="12" x2="20" y2="12" stroke="currentColor" strokeWidth="2" />
-            </svg>
-          </div>
-        )}
+          {/* <h2 className="text-lg font-medium">Now Playing</h2> */}
+          {data?.isPlaying ? (
+            <div className="flex items-center space-x-1">
+              <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse" />
+              <div>
+                <p className='text-sm italic font-light text-green-500'>listening to</p>
+              </div>
+            </div>
+          ) : (
+            <div className="flex items-center space-x-1">
+              <div className="w-2 h-2 rounded-full bg-neutral-400 animate-pulse" />
+              <svg width="24" height="24" viewBox="0 0 24 24" className="text-neutral-400 w-4 h-4">
+                <line x1="4" y1="12" x2="20" y2="12" stroke="currentColor" strokeWidth="2" />
+              </svg>
+            </div>
+          )}
         </div>
         <div className="flex space-x-2">
           <div className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse" />
@@ -56,7 +52,7 @@ export function CurrentlyPlaying() {
               >
                 {data.title}
               </a>
-              <p className={`text-neutral-600 dark:text-neutral-400 ${jetBrainsMono.className}`}>
+              <p className={`text-neutral-600 dark:text-neutral-400`}>
                 {data.artist}
               </p>
             </div>
@@ -77,14 +73,13 @@ export function RecentlyPlayed() {
   const { data } = useSWR('/api/spotify/recently-played', fetcher)
 
   return (
-    <div className="p-4 border rounded-lg dark:border-neutral-800 
-      hover:border-[var(--color-secondary)] transition-colors">
-      <h2 className={`mb-4 text-xl font-semibold ${jetBrainsMono.className}`}>
+    <div className="transition-all p-6 bg-neutral-100/50 dark:bg-neutral-900/50 rounded-xl border border-neutral-200 dark:border-neutral-800 backdrop-blur-sm">
+      <h2 className={`mb-4 text-xl font-semibold text-neutral-600 dark:text-neutral-400 border-b-1 border-neutral-200 dark:border-neutral-800 pb-2`}>
         Recently Played
       </h2>
       {data ? (
         data?.map((track: any, index: number) => (
-          <div key={track.songUrl} className="flex items-center space-x-4 py-2">
+          <div key={track.songUrl} className="flex items-center space-x-4 py-4">
             <span className={`text-[var(--color-accent)] font-medium ${jetBrainsMono.className}`}>
               {index + 1}
             </span>
@@ -105,9 +100,9 @@ export function RecentlyPlayed() {
               <p className={`text-neutral-600 dark:text-neutral-400 ${jetBrainsMono.className}`}>
                 {track.artist}
               </p>
-              <p className={`text-sm text-neutral-500 dark:text-neutral-500 ${jetBrainsMono.className}`}>
+              {/* <p className={`text-sm text-neutral-500 dark:text-neutral-500 ${jetBrainsMono.className}`}>
                 {track.playedAt}
-              </p>
+              </p> */}
             </div>
           </div>
         ))

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./global.css";
 import type { Metadata } from "next";
 import { Navbar } from "./components/nav";
@@ -9,10 +9,9 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import Footer from "./components/footer";
 import { usePathname } from "next/navigation";
 import { Inter } from "next/font/google";
+import cx from "clsx"
 
 const inter = Inter({ subsets: ["latin"] });
-
-const cx = (...classes) => classes.filter(Boolean).join(" ");
 
 export default function RootLayout({
   children,
@@ -20,27 +19,38 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  const [faviconIndex, setFaviconIndex] = useState(0);
+
+  // Define favicon pairs for each route
+  const faviconMap = {
+    "/": ["/win-home.png", "/win-home-alt.png"],
+    "/blog": ["/win-docs.png", "/win-docs-alt.png"],
+    "/spotify": ["/win-music.png", "/win-music-alt.png"],
+  };
 
   useEffect(() => {
-    const setFavicon = () => {
-      let faviconPath = "/win-home.png"; // Default
+    // Determine the correct favicon pair based on the pathname
+    let currentFaviconPair = faviconMap["/"]; // Default to home
 
-      if (pathname.startsWith("/blog")) {
-        faviconPath = "/win-docs.png";
-      } else if (pathname.startsWith("/spotify")) {
-        faviconPath = "/win-music.png";
-      }
+    if (pathname.startsWith("/blog")) {
+      currentFaviconPair = faviconMap["/blog"];
+    } else if (pathname.startsWith("/spotify")) {
+      currentFaviconPair = faviconMap["/spotify"];
+    }
+
+    const intervalId = setInterval(() => {
+      setFaviconIndex((prevIndex) => (prevIndex + 1) % currentFaviconPair.length);
 
       const link = (document.querySelector("link[rel*='icon']") ||
         document.createElement("link")) as HTMLLinkElement;
       link.type = "image/x-icon";
       link.rel = "shortcut icon";
-      link.href = faviconPath;
+      link.href = currentFaviconPair[faviconIndex];
       document.getElementsByTagName("head")[0].appendChild(link);
-    };
+    }, 1000); // Change favicon every 1000ms (1 second)
 
-    setFavicon();
-  }, [pathname]);
+    return () => clearInterval(intervalId); // Clean up the interval on unmount
+  }, [pathname, faviconIndex]);
 
   return (
     <html

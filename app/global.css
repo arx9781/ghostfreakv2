@@ -28,8 +28,8 @@ html {
 :root {
   --color-surface: 255 255 255;
   --color-primary: 17 17 17;
-  --color-bg-pattern-light: radial-gradient(#f0f0f0_1px,transparent_1px);
-  --color-bg-pattern-dark: radial-gradient(#1a1a1a_1px,transparent_1px);
+  --color-bg-pattern-light: radial-gradient(#f0f0f0_1px, transparent_1px);
+  --color-bg-pattern-dark: radial-gradient(#1a1a1a_1px, transparent_1px);
   --sh-class: #404040;
   --sh-identifier: #404040;
   --sh-sign: #666;
@@ -50,6 +50,7 @@ html {
     --sh-keyword: #a3a3a3;
     --sh-string: #a3a3a3;
   }
+
   html {
     color-scheme: dark;
   }
@@ -82,7 +83,7 @@ html {
   content: '#';
 }
 
-.prose *:hover > .anchor {
+.prose *:hover>.anchor {
   @apply visible;
 }
 
@@ -110,7 +111,7 @@ html {
 }
 
 .prose p {
-  @apply my-3 text-neutral-800 dark:text-neutral-200 text-[0.95rem];
+  @apply my-3 text-neutral-800 dark:text-neutral-300 text-[0.95rem];
 }
 
 .prose h1 {
@@ -141,7 +142,7 @@ html {
   @apply list-decimal pl-6;
 }
 
-.prose > :first-child {
+.prose> :first-child {
   /* Override removing top margin, causing layout shift */
   margin-top: 1.25em !important;
   margin-bottom: 1.25em !important;
@@ -152,8 +153,10 @@ pre::-webkit-scrollbar {
 }
 
 pre {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 /* Remove Safari input shadow on mobile */
@@ -180,10 +183,12 @@ table {
 }
 
 @keyframes pulse {
+
   0%,
   100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.5;
   }
