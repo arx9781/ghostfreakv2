@@ -26,27 +26,27 @@ html {
 }
 
 :root {
-  --color-surface: 255 255 255;
-  --color-primary: 17 17 17;
-  --color-bg-pattern-light: radial-gradient(#f0f0f0_1px, transparent_1px);
+  --color-surface: 250 250 250;
+  --color-primary: 38 38 38;
+  --color-bg-pattern-light: radial-gradient(#f5f5f5_1px, transparent_1px);
   --color-bg-pattern-dark: radial-gradient(#1a1a1a_1px, transparent_1px);
-  --sh-class: #404040;
+  --sh-class: #525252;
   --sh-identifier: #404040;
-  --sh-sign: #666;
-  --sh-string: #404040;
-  --sh-keyword: #666;
+  --sh-sign: #737373;
+  --sh-string: #525252;
+  --sh-keyword: #737373;
   --sh-comment: #8a8a8a;
-  --sh-jsxliterals: #666;
-  --sh-property: #404040;
-  --sh-entity: #404040;
+  --sh-jsxliterals: #737373;
+  --sh-property: #525252;
+  --sh-entity: #525252;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-surface: 23 23 23;
-    --color-primary: 245 245 245;
+    --color-surface: 17 17 17;
+    --color-primary: 229 229 229;
     --sh-class: #a3a3a3;
-    --sh-identifier: #fff;
+    --sh-identifier: #d4d4d4;
     --sh-keyword: #a3a3a3;
     --sh-string: #a3a3a3;
   }
@@ -88,17 +88,15 @@ html {
 }
 
 .prose pre {
-  @apply bg-neutral-50 dark:bg-neutral-900 rounded-lg overflow-x-auto border border-neutral-200 dark:border-neutral-900 py-2 px-3 text-sm;
+  @apply bg-neutral-100 dark:bg-neutral-900 rounded-lg overflow-x-auto border border-neutral-100 dark:border-neutral-800 py-2 px-3 text-sm;
 }
 
 .prose code {
-  @apply px-1 py-0.5 rounded-lg;
+  @apply px-1 py-0.5 rounded-lg bg-neutral-100/50 dark:bg-neutral-800/50;
 }
 
 .prose pre code {
-  @apply p-0;
-  border: initial;
-  line-height: 1.5;
+  @apply p-0 bg-transparent;
 }
 
 .prose code span {

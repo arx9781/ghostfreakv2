@@ -4,4 +4,4 @@ export const ScrollShadow = () => {
       bg-gradient-to-t from-neutral-200/80 via-neutral-200/50 to-transparent 
       dark:from-neutral-950/80 dark:via-neutral-950/50 pointer-events-none" />
   );
-  }
+}

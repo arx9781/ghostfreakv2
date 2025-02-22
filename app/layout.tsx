@@ -60,7 +60,7 @@ export default function RootLayout({
         inter.className
       )}
     >
-      <body className="antialiased max-w-2xl mx-4 mt-4 lg:mx-auto text-base">
+      <body className="antialiased max-w-3xl mx-4 mt-4 lg:mx-auto text-base flex flex-col min-h-screen">
         <main className="flex-auto min-w-0 mt-4 flex flex-col px-2 md:px-0">
           <div className="relative w-full">
             <div
@@ -68,7 +68,7 @@ export default function RootLayout({
               bg-[var(--color-bg-pattern-light)] dark:bg-[var(--color-bg-pattern-dark)] 
               [background-size:16px_16px] opacity-20 -z-10"
             />
-            <section className="w-full flex gap-4 justify-start mb-6 p-2">
+            <section className="w-full flex gap-4 justify-startp-2">
               <div className="flex flex-col gap-2 justify-center">
                 {/* <h2 className="mb-0 text-zinc-100 font-bold">Aditya</h2>*/}
               </div>

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { formatDate, getBlogPosts } from "app/blog/utils";
 import { ScrollShadow } from "app/components/scroll-shadow";
+import AnimatedContent from "./ui/AnimatedContent";
 
 export function BlogPosts() {
   let allBlogs = getBlogPosts();
@@ -18,27 +19,37 @@ export function BlogPosts() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
       {allBlogs.map((post) => (
-        <Link
+        <AnimatedContent
           key={post.slug}
-          href={`/blog/${post.slug}`}
-          className="group p-4 rounded-lg border border-neutral-200/50 dark:border-neutral-800/50 hover:border-neutral-300/60 dark:hover:border-neutral-700/60 transition-all duration-200 hover:bg-neutral-50/30 dark:hover:bg-neutral-900/20 h-full"
+          distance={20}
+          direction="vertical"
+          delay={0.1}
+          config={{ tension: 90, friction: 18 }}
+          initialOpacity={0.3}
+          scale={1.02}
+          threshold={0.1}
         >
-          <div className="flex justify-between items-start">
-            <div>
-              <p className="text-sm text-neutral-500 mb-2">
-                {formatDate(post.metadata.publishedAt, false)}
-              </p>
-              <h3 className="text-xl font-medium text-neutral-900 dark:text-neutral-100 group-hover:text-[var(--color-accent)] transition-colors">
-                {post.metadata.title}
-              </h3>
+          <Link
+            href={`/blog/${post.slug}`}
+            className="group p-4 rounded-lg border border-neutral-200/50 dark:border-neutral-800/50 hover:border-neutral-300/60 dark:hover:border-neutral-700/60 transition-all duration-200 hover:bg-neutral-50/30 dark:hover:bg-neutral-900/20 h-full"
+          >
+            <div className="flex justify-between items-start">
+              <div>
+                <p className="text-sm text-neutral-500 mb-2">
+                  {formatDate(post.metadata.publishedAt, false)}
+                </p>
+                <h3 className="text-xl font-medium text-neutral-900 dark:text-neutral-100 group-hover:text-[var(--color-accent)] transition-colors">
+                  {post.metadata.title}
+                </h3>
+              </div>
+              <div className="text-neutral-400 group-hover:text-[var(--color-accent)] transition-colors">
+                →
+              </div>
             </div>
-            <div className="text-neutral-400 group-hover:text-[var(--color-accent)] transition-colors">
-              →
-            </div>
-          </div>
-        </Link>
+          </Link>
+        </AnimatedContent>
       ))}
-      <ScrollShadow />
+      {/* <ScrollShadow /> */}
     </div>
   );
 }

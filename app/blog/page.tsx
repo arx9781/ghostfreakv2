@@ -9,11 +9,13 @@ export const metadata = {
 
 export default function Page() {
   return (
-    <section className="relative">
+    <section className="relative min-h-[calc(100vh-140px)]">
       <BackButton />
       <div className="absolute inset-0 bg-[var(--color-bg-pattern-light)] dark:bg-[var(--color-bg-pattern-dark)] [background-size:16px_16px] opacity-10 -z-10" />
-      <BlogPosts />
-      <ScrollShadow />
+      <div className="flex flex-col justify-between min-h-[inherit]">
+        <BlogPosts />
+        <ScrollShadow />
+      </div>
     </section>
   )
 }

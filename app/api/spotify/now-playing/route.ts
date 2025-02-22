@@ -30,7 +30,14 @@ export async function GET() {
   })
 
   if (response.status === 204) {
-    return NextResponse.json({ isPlaying: false })
+    return NextResponse.json({ isPlaying: false },
+      {
+        headers: {
+          'Cache-Control': 'no-cache, no-store, must-revalidate',
+          'Pragma': 'no-cache'
+        }
+      }
+    )
   }
 
   const data = await response.json()
