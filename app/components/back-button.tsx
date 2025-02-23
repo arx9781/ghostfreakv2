@@ -1,13 +1,11 @@
 import Link from "next/link";
-import { JetBrains_Mono } from "next/font/google";
-
-const jetBrainsMono = JetBrains_Mono({ subsets: ["latin"] });
+import { GeistMono } from "geist/font/mono";
 
 export function BackButton() {
   return (
     <Link
       href="/"
-      className={`flex items-center text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-200 mb-6 group transition-colors ${jetBrainsMono.className} font-bold mb-8`}
+      className={`flex items-center text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-200 group transition-colors font-bold mb-8`}
     >
       <svg
         width="16"

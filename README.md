@@ -36,4 +36,4 @@ A portfolio and personal website built with Next.js.
 4.  Run the development server: `npm run dev` or `yarn dev` or `pnpm dev`.
 
 **Assets Used**
-1. Wavy line by Made by Made from <a href="https://thenounproject.com/browse/icons/term/wavy-line/" target="_blank" title="Wavy line Icons">Noun Project</a> (CC BY 3.0)
+A lot of components used from [React Bits](https://reactbits.dev). I highly suggest checking it out!

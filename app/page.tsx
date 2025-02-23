@@ -1,15 +1,12 @@
 import { BlogPosts } from "app/components/posts";
 import { ScrollShadow } from "app/components/scroll-shadow";
-import { JetBrains_Mono } from "next/font/google";
 import type { Metadata } from "next";
 import { CurrentlyPlaying } from "./spotify/components";
 import Link from "next/link";
 import MagnetLines from "./components/ui/MagnetLines";
 import AnimatedContent from './components/ui/AnimatedContent'
 import Particles from "./components/ui/Particles";
-
-// const inter = Inter({ subsets: ['latin'] })
-const jetBrainsMono = JetBrains_Mono({ subsets: ["latin"] });
+import { GeistMono } from "geist/font/mono";
 
 export const metadata: Metadata = {
   title: "adityarych",
@@ -31,9 +28,9 @@ export default function Page() {
         threshold={0.2}
       >
         <div
-          className={`space-y-4 ${jetBrainsMono.className}`}
+          className={`space-y-4`}
         >
-          <div className="flex items-start md:items-center justify-center md:flex-row flex-col-reverse">
+          <div className={`flex items-start md:items-center justify-center md:flex-row flex-col-reverse ${GeistMono.className}`}>
             <div>
               <p className="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl leading-relaxed align-justify">
                 Aditya's design interfaces: that merge human-centered metaphors with
@@ -91,9 +88,9 @@ export default function Page() {
           <div className="flex items-center justify-end mt-4">
             <Link
               href="/spotify"
-              className={`text-sm text-neutral-600 dark:text-neutral-400 hover:underline ${jetBrainsMono.className} font-bold`}
+              className={`text-sm font-bold ${GeistMono.className} bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 hover:translate-x-2 transition-all duration-100`}
             >
-              View all →
+              View music →
             </Link>
           </div>
         </div>
@@ -111,7 +108,7 @@ export default function Page() {
       >
         <div className="relative">
           <div className="absolute inset-0 z-0 rounded-lg overflow-hidden">
-            <div style={{ width: '100%', height: '600px', position: 'relative' }}>
+            {/* <div style={{ width: '100%', height: '600px', position: 'relative' }}>
               <Particles
                 particleColors={['#ffffff', '#ffffff']}
                 particleCount={500}
@@ -122,43 +119,43 @@ export default function Page() {
                 alphaParticles={true}
                 disableRotation={false}
               />
-            </div>
+            </div> */}
           </div>
-          <div className={`space-y-4 pb-10 relative z-10 md:p-2 p-1`}>
+          <div className={`space-y-4 pb-1 relative z-10`}>
             <h2 className="text-2xl font-medium tracking-tight hidden md:block mix-blend-difference border-l-4 border-neutral-600 dark:border-neutral-400 pl-4 mb-6">
             </h2>
-            <div className="relative z-10 md:p-2 p-1">
+            <div className="relative z-10">
               <div className="space-y-8">
                 <div className="group">
                   <p className="text-lg md:text-xl leading-relaxed font-medium tracking-tight">
                     <span className="font-mono text-sm text-neutral-500 dark:text-neutral-400 mr-2">01</span>
-                    A <span className="font-mono font-bold border-b-2 border-neutral-800 dark:border-neutral-200">21 y/o</span> software designer from Mumbai.
+                    A <span className={`font-mono ${GeistMono.className} font-bold border-b-2 border-neutral-800 dark:border-neutral-200`}>21 y/o</span> software designer from Mumbai.
                     Building digital tools with architectural precision.
                   </p>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-8 border-t border-neutral-200 dark:border-neutral-800 pt-8">
                   <div className="space-y-4">
-                    <h3 className="text-sm font-mono text-neutral-500 dark:text-neutral-400 uppercase tracking-wide">
+                    <h3 className={`text-sm ${GeistMono.className} text-neutral-500 dark:text-neutral-400 uppercase tracking-wide`}>
                       Leisure Principles
                     </h3>
-                    <p className="text-neutral-600 dark:text-neutral-300">
+                    <p className="text-neutral-900 dark:text-neutral-100 text-xl font-medium">
                       Competitive gaming in{" "}
-                      <span className="font-mono font-medium">Valorant</span> /{" "}
-                      <span className="font-mono font-medium">MLBB</span>.
+                      <span className={`font-mono ${GeistMono.className} font-medium`}>Valorant</span> /{" "}
+                      <span className={`font-mono ${GeistMono.className} font-medium`}>MLBB</span>.
                       Curating anime libraries—special interest in{" "}
-                      <span className="font-mono">space operas</span>.
+                      <span className={`font-mono ${GeistMono.className}`}>space operas</span>.
                     </p>
                   </div>
 
                   <div className="space-y-4">
-                    <h3 className="text-sm font-mono text-neutral-500 dark:text-neutral-400 uppercase tracking-wide">
+                    <h3 className={`text-sm ${GeistMono.className} text-neutral-500 dark:text-neutral-400 uppercase tracking-wide`}>
                       Design Philosophy
                     </h3>
-                    <p className="text-neutral-600 dark:text-neutral-300">
+                    <p className="text-neutral-900 dark:text-neutral-100 text-xl font-medium">
                       Interfaces as durable tools—<br />
-                      <span className="font-mono">form follows function</span> meets{" "}
-                      <span className="font-mono">timeless materiality</span>.
+                      <span className={`font-mono ${GeistMono.className}`}>form follows function</span> meets{" "}
+                      <span className={`font-mono ${GeistMono.className}`}>timeless materiality</span>.
                     </p>
                   </div>
                 </div>
@@ -178,15 +175,19 @@ export default function Page() {
         threshold={0.3}
       >
         <div className="space-y-4 mt-12">
+          <div className="flex items-center">
+            <h1 className="text-3xl font-bold mr-4">Blogs</h1>
+            <span className="flex-1 h-px bg-neutral-200 dark:bg-neutral-800 mt-[5px]"></span>
+          </div>
           <div className="grid gap-6 md:grid-cols-1">
             <BlogPosts />
           </div>
           <div className="flex items-center justify-end">
             <Link
               href="/blog"
-              className={`text-sm text-neutral-600 dark:text-neutral-400 hover:underline ${jetBrainsMono.className} font-bold`}
+              className={`text-sm font-bold ${GeistMono.className} bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 hover:translate-x-2 transition-all duration-100`}
             >
-              View blogs →
+                View all →
             </Link>
           </div>
         </div>

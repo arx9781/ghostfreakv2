@@ -1,8 +1,8 @@
 @import 'tailwindcss';
 
 @theme {
-  --font-mono: 'JetBrains Mono', monospace;
-  --font-sans: 'Inter', sans-serif;
+  --font-mono: 'Geist Mono', monospace;
+  --font-sans: 'Geist Sans', sans-serif;
 }
 
 ::selection {
@@ -181,7 +181,6 @@ table {
 }
 
 @keyframes pulse {
-
   0%,
   100% {
     opacity: 1;
@@ -197,4 +196,21 @@ table {
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
+}
+
+.under-cons {
+  background: linear-gradient(112deg, #3b82f6, #a855f7, #ec4899);
+  animation: span-bg 10s linear infinite;
+}
+
+@keyframes span-bg {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 50% 100%;
+  }
+  100% {
+    background-position: 50% 0%;
+  }
 }

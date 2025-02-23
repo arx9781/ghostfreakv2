@@ -1,8 +1,5 @@
-import { JetBrains_Mono } from "next/font/google";
 import Link from "next/link";
 import AnimatedContent from "./ui/AnimatedContent";
-
-const jetBrainsMono = JetBrains_Mono({ subsets: ["latin"] });
 
 function ArrowIcon() {
   return (
@@ -23,54 +20,20 @@ function ArrowIcon() {
 
 export default function Footer() {
   return (
-    <footer className="border-t dark:border-neutral-800 border-neutral-200 mt-auto">
+    <footer className="mt-auto">
       <div className="max-w-3xl mx-4 lg:mx-auto">
-        <div className="flex flex-row justify-between items-center py-8 gap-4">
-          <div className="flex items-center space-x-2 md:order-1">
-            <div className="h-3 w-3 rounded-full bg-blue-500 animate-pulse" />
-            <span className="text-neutral-600 dark:text-neutral-300 text-sm">
-              All systems normal
-            </span>
-          </div>
-          <AnimatedContent
-            distance={30}
-            direction="vertical"
-            delay={0.5}
-            config={{ tension: 120, friction: 25 }}
-            initialOpacity={0}
-            scale={1.05}
-            threshold={0.2}
-          >
-            <div className={`grid grid-cols-2 gap-x-4 gap-y-2 md:flex md:space-x-4 ${jetBrainsMono.className} text-xs`}>
-              <Link
-                href="/"
-                className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-200 transition-colors"
-              >
-                Home
-              </Link>
-              <Link
-                href="/blog"
-                className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-200 transition-colors"
-              >
-                Blog
-              </Link>
-              <Link
-                href="/spotify"
-                className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-200 transition-colors"
-              >
-                Music
-              </Link>
-              <Link
-                href="/guestbook"
-                className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-200 transition-colors"
-              >
-                Guestbook
-              </Link>
+        <div className="flex md:flex-row justify-between items-center py-8 gap-4">
+          <div className="flex flex-col md:flex-row items-start md:items-center space-x-0 md:space-x-2 md:order-1">
+            <div className="flex items-center space-x-2">
+              <div className="h-3 w-3 rounded-full bg-blue-500 animate-pulse" />
+              <span className="text-neutral-600 dark:text-neutral-300 text-sm">
+                All systems normal
+              </span>
             </div>
-          </AnimatedContent>
-        </div>
-        <div className="border-t dark:border-neutral-800 border-neutral-200 py-4 text-center text-sm text-neutral-500">
-          <p>© {new Date().getFullYear()} Aditya Roychoudhary. MIT License.</p>
+            <p className="text-neutral-500 text-sm mt-2 md:mt-0">
+              © {new Date().getFullYear()} Aditya Roychoudhary. MIT License.
+            </p>
+          </div>
         </div>
       </div>
     </footer>

@@ -1,10 +1,8 @@
 'use client'
 
 import useSWR from 'swr'
-import { JetBrains_Mono } from 'next/font/google'
 import AnimatedContent from 'app/components/ui/AnimatedContent'
-
-const jetBrainsMono = JetBrains_Mono({ subsets: ['latin'] })
+import { GeistMono } from "geist/font/mono";
 
 export function CurrentlyPlaying() {
   const { data } = useSWR('/api/spotify/now-playing?t=${Date.now()}', fetcher, {
@@ -25,8 +23,8 @@ export function CurrentlyPlaying() {
       <div className="group relative p-6 rounded-xl border border-neutral-200 dark:border-neutral-800 shadow-xs hover:shadow-sm transition-shadow">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center space-x-2">
-            <div className={`w-2 h-2 rounded-full ${data?.isPlaying ? 'bg-green-500' : 'bg-neutral-400'}`} />
-            <span className={`text-xs font-medium ${jetBrainsMono.className} text-neutral-500 dark:text-neutral-400 tracking-wide`}>
+            <div className={`w-2 h-2 rounded-full ${data?.isPlaying ? 'bg-green-500' : 'bg-neutral-400'} animate-pulse`} />
+            <span className={`text-xs font-medium text-neutral-500 dark:text-neutral-400 tracking-wide ${GeistMono.className}`}>
               {data?.isPlaying ? 'LIVE' : 'OFFLINE'}
             </span>
           </div>
@@ -55,11 +53,11 @@ export function CurrentlyPlaying() {
                   href={data.songUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`block font-medium truncate hover:text-[var(--color-accent)] transition-colors ${jetBrainsMono.className} text-sm`}
+                  className={`block font-medium truncate hover:text-[var(--color-accent)] transition-colors text-sm ${GeistMono.className}`}
                 >
                   {data.title}
                 </a>
-                <p className={`text-sm truncate text-neutral-500 dark:text-neutral-400`}>
+                <p className={`text-sm truncate text-neutral-500 dark:text-neutral-400 ${GeistMono.className}`}>
                   {data.artist}
                 </p>
               </div>
@@ -78,7 +76,7 @@ export function CurrentlyPlaying() {
                   d="M18.25 11C18.25 15 15 16.5 12 16.5C9 16.5 5.75 15 5.75 11"
                 />
               </svg>
-              <p className={`text-neutral-600 dark:text-neutral-400 italic ${jetBrainsMono.className}`}>
+              <p className={`text-neutral-600 dark:text-neutral-400 italic`}>
                 No active playback
               </p>
             </div>
@@ -104,8 +102,8 @@ export function RecentlyPlayed() {
       scale={1.03}
       threshold={0.3}
     >
-      <div className="relative p-6 rounded-xl border border-neutral-200 dark:border-neutral-800 shadow-xs">
-        <h2 className={`mb-4 text-sm font-medium text-neutral-500 dark:text-neutral-400 ${jetBrainsMono.className} tracking-wide`}>
+      <div className="relative p-6 rounded-xl border border-neutral-200 dark:border-neutral-800 shadow-xs overflow-hidden">
+        <h2 className={`mb-4 text-sm font-medium text-neutral-500 dark:text-neutral-400 tracking-wide`}>
           RECENTLY PLAYED
         </h2>
 
@@ -116,7 +114,7 @@ export function RecentlyPlayed() {
                 key={`${track.songUrl}-${track.playedAt}`}
                 className="flex items-center space-x-3 p-2 hover:bg-neutral-100 dark:hover:bg-neutral-800/50 transition-colors"
               >
-                <span className={`text-xs text-neutral-400 dark:text-neutral-600 ${jetBrainsMono.className}`}>
+                <span className={`text-xs text-neutral-400 dark:text-neutral-600 ${GeistMono.className}`}>
                   {String(index + 1).padStart(2, '0')}
                 </span>
                 <img
@@ -129,7 +127,7 @@ export function RecentlyPlayed() {
                     href={track.songUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`block font-medium truncate hover:text-[var(--color-accent)] transition-colors ${jetBrainsMono.className} text-sm`}
+                    className={`block font-medium truncate hover:text-[var(--color-accent)] transition-colors text-sm`}
                   >
                     {track.title}
                   </a>

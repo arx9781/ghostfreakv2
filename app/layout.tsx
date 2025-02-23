@@ -8,10 +8,9 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Footer from "./components/footer";
 import { usePathname } from "next/navigation";
-import { Inter } from "next/font/google";
+import { GeistSans } from 'geist/font/sans';
+import { GeistMono } from 'geist/font/mono'
 import cx from "clsx"
-
-const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
   children,
@@ -53,15 +52,19 @@ export default function RootLayout({
   }, [pathname, faviconIndex]);
 
   return (
+    <>
     <html
       lang="en"
       className={cx(
         "text-black bg-white dark:text-white dark:bg-black",
-        inter.className
+        GeistSans.className
       )}
     >
       <body className="antialiased max-w-3xl mx-4 mt-4 lg:mx-auto text-base flex flex-col min-h-screen">
-        <main className="flex-auto min-w-0 mt-4 flex flex-col px-2 md:px-0">
+        <div className="absolute top-0 left-0 w-full z-50">
+          <span className={`dark:text-black text-white under-cons text-center font-bold font-mono block w-full ${GeistMono.className}`}>Website under construction</span>
+        </div>
+        <main className="flex-auto min-w-0 mt-12 flex flex-col px-2 md:px-0">
           <div className="relative w-full">
             <div
               className="absolute inset-0 
@@ -82,5 +85,6 @@ export default function RootLayout({
         </main>
       </body>
     </html>
+    </>
   );
 }
