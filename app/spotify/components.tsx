@@ -73,20 +73,13 @@ export function CurrentlyPlaying() {
             </div>
           ) : (
             <div className="flex items-center justify-center space-x-2 py-4">
-              <svg
-                className="w-6 h-6 text-neutral-400 dark:text-neutral-600"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeWidth="1.5"
-                  d="M18.25 11C18.25 15 15 16.5 12 16.5C9 16.5 5.75 15 5.75 11"
-                />
-              </svg>
               <p className={`text-neutral-600 dark:text-neutral-400 italic`}>
-                No active playback
+                No active playback{" "}
+                <span
+                  className={`text-xs text-neutral-500 dark:text-neutral-400 italic ${GeistMono.className}`}
+                >
+                  {":{"}
+                </span>
               </p>
             </div>
           )
