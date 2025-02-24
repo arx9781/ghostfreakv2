@@ -1,7 +1,7 @@
 export function ViewButton({ children }) {
   return (
     <button
-      className={`relative mt-1 inline-flex items-center justify-center px-4 py-2 leading-5 rounded-md border border-neutral-200 dark:border-neutral-800 text-sm font-semibold text-neutral-400 cursor-pointer hover:translate-x-1 transition-all duration-200 ease-in-out hover:text-neutral-800 dark:hover:text-neutral-200`}
+      className={`relative mt-1 inline-flex items-center justify-center px-4 py-2 leading-5 rounded-lg border border-neutral-200 dark:border-neutral-800 text-sm font-semibold text-neutral-400 cursor-pointer hover:translate-x-1 transition-all duration-200 ease-in-out hover:text-neutral-800 dark:hover:text-neutral-200`}
     >
       <span className="relative z-10">{children}</span>
       <svg

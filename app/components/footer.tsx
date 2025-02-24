@@ -21,21 +21,41 @@ function ArrowIcon() {
 export default function Footer() {
   return (
     <footer className="mt-auto">
-      <div className="max-w-3xl mx-4 lg:mx-auto">
-        <div className="flex md:flex-row justify-between items-center py-8 gap-4">
-          <div className="flex flex-col md:flex-row items-start md:items-center space-x-0 md:space-x-2 md:order-1">
-            <div className="flex items-center space-x-1">
-              <div className="h-3 w-3 rounded-full bg-blue-500 animate-pulse mr-0.5" />
-              <span className="text-neutral-600 dark:text-neutral-300 text-sm">
-                All systems normal
-              </span>
-            </div>
-            <p className="text-neutral-500 text-sm mt-2 md:mt-0">
-              © {new Date().getFullYear()} Aditya Roychoudhary. MIT License.
-            </p>
+      <AnimatedContent
+        distance={20}
+        direction="vertical"
+        delay={0.1}
+        config={{ tension: 90, friction: 18 }}
+        initialOpacity={0.3}
+        scale={1.02}
+        threshold={0.1}
+      >
+        <div className="max-w-3xl mx-0 md:mx-4 lg:mx-auto">
+          <div className="flex md:flex-row justify-between items-center py-8 gap-4">
+            <AnimatedContent
+              distance={30}
+              direction="horizontal"
+              delay={0.2}
+              config={{ tension: 100, friction: 20 }}
+              initialOpacity={0.2}
+              scale={1.05}
+              threshold={0.2}
+            >
+              <div className="flex flex-col md:flex-row items-start md:items-center space-x-0 md:space-x-2 md:order-1">
+                <div className="flex items-center space-x-1">
+                  <div className="h-3 w-3 rounded-full bg-blue-500 animate-pulse mr-0.5" />
+                  <span className="text-neutral-600 dark:text-neutral-300 text-sm">
+                    All systems normal
+                  </span>
+                </div>
+                <p className="text-neutral-500 text-sm mt-2 md:mt-0">
+                  © {new Date().getFullYear()} Aditya Roychoudhary. MIT License.
+                </p>
+              </div>
+            </AnimatedContent>
           </div>
         </div>
-      </div>
+      </AnimatedContent>
     </footer>
   );
 }

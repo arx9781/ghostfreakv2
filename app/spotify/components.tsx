@@ -1,6 +1,7 @@
 "use client";
 
 import { GeistMono } from "geist/font/mono";
+import { Disc3, PauseCircle } from "lucide-react";
 
 import AnimatedContent from "app/components/ui/AnimatedContent";
 import useSWR from "swr";
@@ -36,19 +37,20 @@ export function CurrentlyPlaying() {
             </span>
           </div>
           <div className="flex space-x-1.5">
-            {[...Array(3)].map((_, i) => (
-              <div
-                key={i}
-                className="w-1 h-1 rounded-full bg-neutral-400 dark:bg-neutral-600"
-              />
-            ))}
+            <span>
+              {data?.isPlaying ? (
+                <Disc3 className="w-5 h-5 text-neutral-400 dark:text-neutral-600 animate-spin" />
+              ) : (
+                <PauseCircle className="w-5 h-5 text-neutral-400 dark:text-neutral-600" />
+              )}
+            </span>
           </div>
         </div>
 
         {data ? (
           data?.isPlaying ? (
             <div className="flex items-center space-x-4">
-              <div className="relative overflow-hidden rounded-lg shadow-sm">
+              <div className="relative overflow-hidden rounded-md shadow-sm">
                 <img
                   className="w-14 h-14 object-cover transform transition-transform duration-200 hover:scale-105"
                   src={data.albumArt}
@@ -73,13 +75,10 @@ export function CurrentlyPlaying() {
             </div>
           ) : (
             <div className="flex items-center justify-center space-x-2 py-4">
-              <p className={`text-neutral-600 dark:text-neutral-400 italic`}>
-                No active playback{" "}
-                <span
-                  className={`text-xs text-neutral-500 dark:text-neutral-400 italic ${GeistMono.className}`}
-                >
-                  {":{"}
-                </span>
+              <p
+                className={`text-neutral-600 dark:text-neutral-400 font-semibold`}
+              >
+                {`Nothing Currently Playing (_　_|||)`}
               </p>
             </div>
           )
@@ -145,7 +144,7 @@ export function RecentlyPlayed() {
                       {track.artist}
                     </p>
                     <span
-                      className={`text-[8px] md:text-xs ${GeistMono.className} italic text-neutral-500 dark:text-neutral-400`}
+                      className={`text-[8px] md:text-xs text-xs text-neutral-400 dark:text-neutral-600 ${GeistMono.className}`}
                     >
                       {new Date(track.playedAt).toLocaleTimeString([], {
                         hour: "2-digit",

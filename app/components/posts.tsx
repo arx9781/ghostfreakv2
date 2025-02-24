@@ -33,7 +33,7 @@ export function BlogPosts() {
         >
           <Link
             href={`/blog/${post.slug}`}
-            className="group p-4 rounded-lg border border-neutral-200/50 dark:border-neutral-800/50 hover:border-neutral-300/60 dark:hover:border-neutral-700/60 transition-all duration-200 hover:bg-neutral-50/30 dark:hover:bg-neutral-900/20 h-full"
+            className="group p-4 rounded-lg border border-neutral-400/50 dark:border-neutral-800/50 hover:border-neutral-300/60 dark:hover:border-neutral-700/60 transition-all duration-200 hover:bg-neutral-50/30 dark:hover:bg-neutral-900/20 h-full"
           >
             <div className="flex justify-between items-start">
               <div>

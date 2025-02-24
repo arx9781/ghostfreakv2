@@ -5,7 +5,7 @@ import { GeistMono } from "geist/font/mono";
 
 import { BlogPosts } from "app/components/posts";
 import AnimatedContent from "./components/ui/AnimatedContent";
-import MagnetLines from "./components/ui/MagnetLines";
+import CircularText from "./components/ui/CircularText";
 import { CurrentlyPlaying } from "./spotify/components";
 import { ViewButton } from "./components/view-button";
 
@@ -31,13 +31,13 @@ export default function Page() {
           <div
             className={`flex items-start md:items-center justify-center md:flex-row flex-col-reverse ${GeistMono.className}`}
           >
-            <div>
-              <p className="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl leading-relaxed align-justify">
+            <div className="md:mr-6 mt-3 md:mt-0">
+              <p className="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl leading-relaxed text-justify">
                 Aditya's design interfaces: that merge human-centered metaphors
                 with scalable systems. His work blends neo-brutalism with
                 timeless minimalism, all within a refined monochromatic palette.
               </p>
-              <p className="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl leading-relaxed align-justify">
+              <p className="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl leading-relaxed text-justify">
                 He studied IT and Computer Science at HSNC University, gaining
                 experience as an intern and freelancer. Currently, he focuses on
                 conceptual and systems design for{" "}
@@ -49,7 +49,7 @@ export default function Page() {
             </div>
             <AnimatedContent
               distance={150}
-              direction="horizontal"
+              direction="vertical"
               reverse={false}
               config={{ tension: 80, friction: 20 }}
               initialOpacity={0.2}
@@ -57,15 +57,11 @@ export default function Page() {
               threshold={0.2}
             >
               <div>
-                <MagnetLines
-                  rows={6}
-                  columns={6}
-                  containerSize="40vmin"
-                  lineColor="gray"
-                  lineWidth="0.6vmin"
-                  lineHeight="3vmin"
-                  baseAngle={0}
-                  style={{ margin: "2rem auto" }}
+                <CircularText
+                  text="SOFTWARE—DESIGNER—"
+                  onHover="slowDown"
+                  spinDuration={20}
+                  className={`${GeistMono.className}`}
                 />
               </div>
             </AnimatedContent>
@@ -180,11 +176,21 @@ export default function Page() {
             <span className="flex-1 h-px bg-neutral-200 dark:bg-neutral-800 mt-[5px]"></span>
           </div>
           <CurrentlyPlaying />
-          <div className="flex items-center justify-end mt-4">
-            <Link href="/spotify">
-              <ViewButton>View music</ViewButton>
-            </Link>
-          </div>
+          <AnimatedContent
+            distance={100}
+            direction="vertical"
+            delay={0.4}
+            config={{ tension: 110, friction: 20 }}
+            initialOpacity={0}
+            scale={1.03}
+            threshold={0.3}
+          >
+            <div className="flex items-center justify-end mt-4">
+              <Link href="/spotify">
+                <ViewButton>View music</ViewButton>
+              </Link>
+            </div>
+          </AnimatedContent>
         </div>
       </AnimatedContent>
 
@@ -205,11 +211,21 @@ export default function Page() {
           <div className="grid gap-6 md:grid-cols-1">
             <BlogPosts />
           </div>
-          <div className="flex items-center justify-end mt-4">
-            <Link href="/blog">
-              <ViewButton>View blogs</ViewButton>
-            </Link>
-          </div>
+          <AnimatedContent
+            distance={100}
+            direction="vertical"
+            delay={0.4}
+            config={{ tension: 110, friction: 20 }}
+            initialOpacity={0}
+            scale={1.03}
+            threshold={0.3}
+          >
+            <div className="flex items-center justify-end mt-4">
+              <Link href="/blog">
+                <ViewButton>View blogs</ViewButton>
+              </Link>
+            </div>
+          </AnimatedContent>
         </div>
       </AnimatedContent>
       {/* <ScrollShadow /> */}
