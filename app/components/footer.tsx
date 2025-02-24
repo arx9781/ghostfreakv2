@@ -24,8 +24,8 @@ export default function Footer() {
       <div className="max-w-3xl mx-4 lg:mx-auto">
         <div className="flex md:flex-row justify-between items-center py-8 gap-4">
           <div className="flex flex-col md:flex-row items-start md:items-center space-x-0 md:space-x-2 md:order-1">
-            <div className="flex items-center space-x-2">
-              <div className="h-3 w-3 rounded-full bg-blue-500 animate-pulse" />
+            <div className="flex items-center space-x-1">
+              <div className="h-3 w-3 rounded-full bg-blue-500 animate-pulse mr-0.5" />
               <span className="text-neutral-600 dark:text-neutral-300 text-sm">
                 All systems normal
               </span>

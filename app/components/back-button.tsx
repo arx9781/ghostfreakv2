@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { GeistMono } from "geist/font/mono";
 
 export function BackButton() {
   return (

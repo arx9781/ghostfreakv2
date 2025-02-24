@@ -1,6 +1,7 @@
 import Link from "next/link";
+
 import { formatDate, getBlogPosts } from "app/blog/utils";
-import { ScrollShadow } from "app/components/scroll-shadow";
+
 import AnimatedContent from "./ui/AnimatedContent";
 import { GeistMono } from "geist/font/mono";
 
@@ -36,7 +37,9 @@ export function BlogPosts() {
           >
             <div className="flex justify-between items-start">
               <div>
-                <p className={`text-sm text-neutral-500 mb-2 ${GeistMono.className}`}>
+                <p
+                  className={`text-sm text-neutral-500 mb-2 ${GeistMono.className}`}
+                >
                   {formatDate(post.metadata.publishedAt, false)}
                 </p>
                 <h3 className="text-xl font-medium text-neutral-900 dark:text-neutral-100 group-hover:text-[var(--color-accent)] transition-colors">
@@ -50,7 +53,6 @@ export function BlogPosts() {
           </Link>
         </AnimatedContent>
       ))}
-      {/* <ScrollShadow /> */}
     </div>
   );
 }

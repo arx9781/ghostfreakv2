@@ -1,14 +1,12 @@
-// app/api/spotify/recently-played/route.ts
 import { NextResponse } from 'next/server'
 
-export const dynamic = 'force-dynamic' // Prevent static generation
+export const dynamic = 'force-dynamic' 
 
 export async function GET() {
   const client_id = process.env.SPOTIFY_CLIENT_ID
   const client_secret = process.env.SPOTIFY_CLIENT_SECRET
   const refresh_token = process.env.SPOTIFY_REFRESH_TOKEN
 
-  // Get access token (same as now-playing route)
   const tokenResponse = await fetch('https://accounts.spotify.com/api/token', {
     method: 'POST',
     headers: {
@@ -23,7 +21,6 @@ export async function GET() {
 
   const { access_token } = await tokenResponse.json()
 
-  // Get recently played
   const response = await fetch('https://api.spotify.com/v1/me/player/recently-played?limit=5', {
     headers: {
       Authorization: `Bearer ${access_token}`,

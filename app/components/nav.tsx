@@ -1,6 +1,6 @@
+import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useState } from 'react'
 import { motion } from 'framer-motion'
 
 const navItems = {

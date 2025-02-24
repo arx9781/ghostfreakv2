@@ -1,14 +1,15 @@
-'use client'
+"use client";
 
-import useSWR from 'swr'
-import AnimatedContent from 'app/components/ui/AnimatedContent'
 import { GeistMono } from "geist/font/mono";
 
+import AnimatedContent from "app/components/ui/AnimatedContent";
+import useSWR from "swr";
+
 export function CurrentlyPlaying() {
-  const { data } = useSWR('/api/spotify/now-playing?t=${Date.now()}', fetcher, {
+  const { data } = useSWR("/api/spotify/now-playing?t=${Date.now()}", fetcher, {
     refreshInterval: 1000,
     revalidateOnFocus: false,
-  })
+  });
 
   return (
     <AnimatedContent
@@ -20,12 +21,18 @@ export function CurrentlyPlaying() {
       scale={1.02}
       threshold={0.1}
     >
-      <div className="group relative p-6 rounded-xl border border-neutral-200 dark:border-neutral-800 shadow-xs hover:shadow-sm transition-shadow">
+      <div className="group relative p-3 md:p-6 rounded-xl border border-neutral-200 dark:border-neutral-800 shadow-xs hover:shadow-sm transition-shadow">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center space-x-2">
-            <div className={`w-2 h-2 rounded-full ${data?.isPlaying ? 'bg-green-500' : 'bg-neutral-400'} animate-pulse`} />
-            <span className={`text-xs font-medium text-neutral-500 dark:text-neutral-400 tracking-wide ${GeistMono.className}`}>
-              {data?.isPlaying ? 'LIVE' : 'OFFLINE'}
+            <div
+              className={`w-2 h-2 rounded-full ${
+                data?.isPlaying ? "bg-green-500" : "bg-neutral-400"
+              } animate-pulse`}
+            />
+            <span
+              className={`text-xs font-medium text-neutral-500 dark:text-neutral-400 tracking-wide ${GeistMono.className}`}
+            >
+              {data?.isPlaying ? "LIVE" : "OFFLINE"}
             </span>
           </div>
           <div className="flex space-x-1.5">
@@ -57,7 +64,9 @@ export function CurrentlyPlaying() {
                 >
                   {data.title}
                 </a>
-                <p className={`text-sm truncate text-neutral-500 dark:text-neutral-400 ${GeistMono.className}`}>
+                <p
+                  className={`text-sm truncate text-neutral-500 dark:text-neutral-400 ${GeistMono.className}`}
+                >
                   {data.artist}
                 </p>
               </div>
@@ -86,11 +95,11 @@ export function CurrentlyPlaying() {
         )}
       </div>
     </AnimatedContent>
-  )
+  );
 }
 
 export function RecentlyPlayed() {
-  const { data } = useSWR('/api/spotify/recently-played', fetcher)
+  const { data } = useSWR("/api/spotify/recently-played", fetcher);
 
   return (
     <AnimatedContent
@@ -102,8 +111,10 @@ export function RecentlyPlayed() {
       scale={1.03}
       threshold={0.3}
     >
-      <div className="relative p-6 rounded-xl border border-neutral-200 dark:border-neutral-800 shadow-xs overflow-hidden">
-        <h2 className={`mb-4 text-sm font-medium text-neutral-500 dark:text-neutral-400 tracking-wide`}>
+      <div className="relative p-3 md:p-6 rounded-xl border border-neutral-200 dark:border-neutral-800 shadow-xs overflow-hidden">
+        <h2
+          className={`mb-4 text-sm font-medium text-neutral-500 dark:text-neutral-400 tracking-wide`}
+        >
           RECENTLY PLAYED
         </h2>
 
@@ -112,10 +123,12 @@ export function RecentlyPlayed() {
             {data?.map((track: any, index: number) => (
               <div
                 key={`${track.songUrl}-${track.playedAt}`}
-                className="flex items-center space-x-3 p-2 hover:bg-neutral-100 dark:hover:bg-neutral-800/50 transition-colors"
+                className="flex items-center space-x-3 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-800/50 transition-colors"
               >
-                <span className={`text-xs text-neutral-400 dark:text-neutral-600 ${GeistMono.className}`}>
-                  {String(index + 1).padStart(2, '0')}
+                <span
+                  className={`text-xs text-neutral-400 dark:text-neutral-600 ${GeistMono.className}`}
+                >
+                  {String(index + 1).padStart(2, "0")}
                 </span>
                 <img
                   className="w-10 h-10 rounded-md shadow-sm"
@@ -131,9 +144,23 @@ export function RecentlyPlayed() {
                   >
                     {track.title}
                   </a>
-                  <p className={`text-sm truncate text-neutral-500 dark:text-neutral-400`}>
-                    {track.artist}
-                  </p>
+
+                  <div className="flex items-center justify-between">
+                    <p
+                      className={`text-sm truncate text-neutral-500 dark:text-neutral-400 ${GeistMono.className}`}
+                    >
+                      {track.artist}
+                    </p>
+                    <span
+                      className={`text-[8px] md:text-xs ${GeistMono.className} italic text-neutral-500 dark:text-neutral-400`}
+                    >
+                      {new Date(track.playedAt).toLocaleTimeString([], {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                        hour12: true,
+                      })}
+                    </span>
+                  </div>
                 </div>
               </div>
             ))}
@@ -143,10 +170,10 @@ export function RecentlyPlayed() {
         )}
       </div>
     </AnimatedContent>
-  )
+  );
 }
 
-const fetcher = (url: string) => fetch(url).then((res) => res.json())
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 function CurrentlyPlayingSkeleton() {
   return (
@@ -157,7 +184,7 @@ function CurrentlyPlayingSkeleton() {
         <div className="h-3 rounded-md bg-neutral-200 dark:bg-neutral-800 animate-pulse w-1/2" />
       </div>
     </div>
-  )
+  );
 }
 
 function RecentlyPlayedSkeleton() {
@@ -173,5 +200,5 @@ function RecentlyPlayedSkeleton() {
         </div>
       ))}
     </div>
-  )
+  );
 }
