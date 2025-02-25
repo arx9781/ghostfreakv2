@@ -214,3 +214,52 @@ table {
     background-position: 50% 0%;
   }
 }
+
+.feathered-blur {
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 40%,
+    rgba(0, 0, 0, 0)
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 40%,
+    rgba(0, 0, 0, 0)
+  );
+}
+
+/* Glow effect for elements scrolling under the blur */
+.glow-scroll-area {
+  position: relative;
+}
+
+.glow-scroll-area > * {
+  position: relative;
+  transition: filter 0.3s ease;
+}
+
+.glow-scroll-area > *:hover {
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+}
+
+/* For scrolled elements approaching the blur */
+@keyframes subtle-glow {
+  0% {
+    filter: drop-shadow(0 0 0px rgba(255, 255, 255, 0));
+  }
+  50% {
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
+  }
+  100% {
+    filter: drop-shadow(0 0 0px rgba(255, 255, 255, 0));
+  }
+}
+
+.scroll-item-approaching {
+  animation: subtle-glow 2s infinite;
+}
+
+/* Dark mode adjustments */
+.dark .glow-scroll-area > *:hover {
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
+}

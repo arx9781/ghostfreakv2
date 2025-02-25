@@ -1,23 +1,22 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-
 import { GeistMono } from "geist/font/mono";
 
 import { BlogPosts } from "app/components/posts";
 import AnimatedContent from "./components/ui/AnimatedContent";
-import CircularText from "./components/ui/CircularText";
 import { CurrentlyPlaying } from "./spotify/components";
 import { ViewButton } from "./components/view-button";
 
 export const metadata: Metadata = {
-  title: "adityarych",
+  title: "Aditya Roychoudhary",
   description:
-    "a personal dark and minimal themed website. contains a blog page and a spotify page where the users can see my stats",
+    "Aditya Roychoudhary is a software designer from Mumbai, creating interfaces that merge human-centered metaphors with scalable systems.",
 };
 
 export default function Page() {
   return (
-    <section className="space-y-6">
+    <section className="space-y-12 md:space-y-20 max-w-4xl mx-auto">
+      {/* Hero Section */}
       <AnimatedContent
         distance={150}
         direction="horizontal"
@@ -27,48 +26,21 @@ export default function Page() {
         scale={1.1}
         threshold={0.2}
       >
-        <div className={`space-y-4`}>
-          <div
-            className={`flex items-start md:items-center justify-center md:flex-row flex-col-reverse ${GeistMono.className}`}
-          >
-            <div className="md:mr-6 mt-3 md:mt-0">
-              <p className="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl leading-relaxed text-justify">
-                Aditya's design interfaces: that merge human-centered metaphors
-                with scalable systems. His work blends neo-brutalism with
-                timeless minimalism, all within a refined monochromatic palette.
-              </p>
-              <p className="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl leading-relaxed text-justify">
-                He studied IT and Computer Science at HSNC University, gaining
-                experience as an intern and freelancer. Currently, he focuses on
-                conceptual and systems design for{" "}
-                <span className="text-neutral-800 dark:text-neutral-200 border-b-1 border-neutral-600 dark:border-neutral-200 cursor-pointer hover:scale-95 transition-all duration-200">
-                  Vercel
-                </span>{" "}
-                —a company he aspires to join.
-              </p>
-            </div>
-            <AnimatedContent
-              distance={150}
-              direction="vertical"
-              reverse={false}
-              config={{ tension: 80, friction: 20 }}
-              initialOpacity={0.2}
-              scale={1.1}
-              threshold={0.2}
+        <div className="py-8 md:py-16 border-b border-neutral-200 dark:border-neutral-800">
+          <p className="text-xl md:text-2xl text-neutral-600 dark:text-neutral-400 leading-relaxed font-medium">
+            <span
+              className={`dark:text-white text-black ${GeistMono.className} font-bold`}
             >
-              <div>
-                <CircularText
-                  text="SOFTWARE—DESIGNER—"
-                  onHover="slowDown"
-                  spinDuration={20}
-                  className={`${GeistMono.className}`}
-                />
-              </div>
-            </AnimatedContent>
-          </div>
+              Aditya's design interfaces:
+            </span>{" "}
+            that merge human-centered metaphors with scalable systems. His work
+            blends neo-brutalism with timeless minimalism, all within a refined
+            monochromatic palette.
+          </p>
         </div>
       </AnimatedContent>
 
+      {/* About Section */}
       <AnimatedContent
         distance={80}
         direction="horizontal"
@@ -81,12 +53,16 @@ export default function Page() {
       >
         <div className="relative">
           <div className="absolute inset-0 z-0 rounded-lg overflow-hidden"></div>
-          <div className={`space-y-4 pb-1 relative z-10`}>
-            <h2 className="text-2xl font-medium tracking-tight hidden md:block mix-blend-difference border-l-4 border-neutral-600 dark:border-neutral-400 pl-4 mb-6"></h2>
+          <div className="space-y-8 relative z-10">
+            <div className="flex items-center mb-8">
+              <h1 className="text-3xl font-bold mr-4">Brief</h1>
+              <span className="flex-1 h-px bg-neutral-200 dark:bg-neutral-800 mt-[5px]"></span>
+            </div>
+
             <div className="relative z-10">
               <div className="space-y-8">
                 <div className="group">
-                  <p className="text-lg md:text-xl leading-relaxed font-medium tracking-tight">
+                  <p className="text-lg md:text-xl leading-relaxed font-medium tracking-tight mb-6">
                     <span className="font-mono text-sm text-neutral-500 dark:text-neutral-400 mr-2">
                       01
                     </span>
@@ -105,6 +81,30 @@ export default function Page() {
                     software designer from Mumbai. Building digital tools with
                     architectural precision.
                   </p>
+
+                  <AnimatedContent
+                    distance={100}
+                    direction="horizontal"
+                    reverse={true}
+                    delay={0.4}
+                    config={{ friction: 20, tension: 110 }}
+                    initialOpacity={0}
+                    scale={1.03}
+                    threshold={0.3}
+                  >
+                    <p className="text-lg md:text-xl leading-relaxed font-medium tracking-tight">
+                      <span className="font-mono text-sm text-neutral-500 dark:text-neutral-400 mr-2">
+                        02
+                      </span>
+                      He studied IT and Computer Science at HSNC University,
+                      gaining experience as an intern and freelancer. Currently,
+                      he focuses on conceptual and systems design for{" "}
+                      <span className="text-neutral-800 dark:text-neutral-200 border-b border-neutral-600 dark:border-neutral-400 cursor-pointer hover:text-neutral-600 dark:hover:text-neutral-300 transition-all duration-200">
+                        Vercel
+                      </span>{" "}
+                      —a company he aspires to join.
+                    </p>
+                  </AnimatedContent>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-8 border-t border-neutral-200 dark:border-neutral-800 pt-8">
@@ -161,6 +161,7 @@ export default function Page() {
         </div>
       </AnimatedContent>
 
+      {/* Spotify Section */}
       <AnimatedContent
         distance={50}
         direction="vertical"
@@ -170,12 +171,14 @@ export default function Page() {
         scale={1.05}
         threshold={0.1}
       >
-        <div className="mt-12">
-          <div className="flex items-center mb-6">
+        <div>
+          <div className="flex items-center mb-8">
             <h1 className="text-3xl font-bold mr-4">Spotify</h1>
             <span className="flex-1 h-px bg-neutral-200 dark:bg-neutral-800 mt-[5px]"></span>
           </div>
-          <CurrentlyPlaying />
+          <div>
+            <CurrentlyPlaying />
+          </div>
           <AnimatedContent
             distance={100}
             direction="vertical"
@@ -185,7 +188,7 @@ export default function Page() {
             scale={1.03}
             threshold={0.3}
           >
-            <div className="flex items-center justify-end mt-4">
+            <div className="flex items-center justify-end mt-6">
               <Link href="/spotify">
                 <ViewButton>View music</ViewButton>
               </Link>
@@ -194,6 +197,7 @@ export default function Page() {
         </div>
       </AnimatedContent>
 
+      {/* Blog Section */}
       <AnimatedContent
         distance={100}
         direction="vertical"
@@ -203,12 +207,12 @@ export default function Page() {
         scale={1.03}
         threshold={0.3}
       >
-        <div className="space-y-4 mt-12">
-          <div className="flex items-center">
+        <div>
+          <div className="flex items-center mb-8">
             <h1 className="text-3xl font-bold mr-4">Blogs</h1>
             <span className="flex-1 h-px bg-neutral-200 dark:bg-neutral-800 mt-[5px]"></span>
           </div>
-          <div className="grid gap-6 md:grid-cols-1">
+          <div>
             <BlogPosts />
           </div>
           <AnimatedContent
@@ -220,7 +224,7 @@ export default function Page() {
             scale={1.03}
             threshold={0.3}
           >
-            <div className="flex items-center justify-end mt-4">
+            <div className="flex items-center justify-end mt-6">
               <Link href="/blog">
                 <ViewButton>View blogs</ViewButton>
               </Link>
@@ -228,7 +232,6 @@ export default function Page() {
           </AnimatedContent>
         </div>
       </AnimatedContent>
-      {/* <ScrollShadow /> */}
     </section>
   );
 }

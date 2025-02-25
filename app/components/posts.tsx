@@ -33,16 +33,16 @@ export function BlogPosts() {
         >
           <Link
             href={`/blog/${post.slug}`}
-            className="group p-4 rounded-lg border border-neutral-400/50 dark:border-neutral-800/50 hover:border-neutral-300/60 dark:hover:border-neutral-700/60 transition-all duration-200 hover:bg-neutral-50/30 dark:hover:bg-neutral-900/20 h-full"
+            className="group rounded-lg transition-all duration-200 h-full"
           >
-            <div className="flex justify-between items-start">
+            <div className="flex justify-between items-start p-6 hover:bg-neutral-300/70 dark:hover:bg-neutral-900/70 rounded-lg border border-neutral-300/70 dark:border-neutral-900/70 transition-colors ease-in-out duration-100">
               <div>
                 <p
                   className={`text-sm text-neutral-500 mb-2 ${GeistMono.className}`}
                 >
                   {formatDate(post.metadata.publishedAt, false)}
                 </p>
-                <h3 className="text-xl font-medium text-neutral-900 dark:text-neutral-100 group-hover:text-[var(--color-accent)] transition-colors">
+                <h3 className="text-base md:text-lg font-medium text-neutral-900 dark:text-neutral-100 group-hover:text-[var(--color-accent)] transition-colors">
                   {post.metadata.title}
                 </h3>
               </div>

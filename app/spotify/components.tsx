@@ -1,7 +1,7 @@
 "use client";
 
 import { GeistMono } from "geist/font/mono";
-import { Disc3, PauseCircle } from "lucide-react";
+import { Disc3, PauseCircle, Clock, Music } from "lucide-react";
 
 import AnimatedContent from "app/components/ui/AnimatedContent";
 import useSWR from "swr";
@@ -22,7 +22,7 @@ export function CurrentlyPlaying() {
       scale={1.02}
       threshold={0.1}
     >
-      <div className="group relative p-3 md:p-6 rounded-xl border border-neutral-200 dark:border-neutral-800 shadow-xs hover:shadow-sm transition-shadow">
+      <div className="group relative p-4 md:p-6 rounded-xl border border-neutral-200 dark:border-neutral-800 transition-all duration-300">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center space-x-2">
             <div
@@ -49,34 +49,40 @@ export function CurrentlyPlaying() {
 
         {data ? (
           data?.isPlaying ? (
-            <div className="flex items-center space-x-4">
-              <div className="relative overflow-hidden rounded-md shadow-sm">
+            <div className="flex items-center space-x-5">
+              <div className="relative overflow-hidden rounded-md">
                 <img
-                  className="w-14 h-14 object-cover transform transition-transform duration-200 hover:scale-105"
+                  className="w-16 h-16 md:w-20 md:h-20 object-cover transform transition-transform duration-300 group-hover:scale-105"
                   src={data.albumArt}
                   alt={data.album}
                 />
               </div>
-              <div className="flex-1 min-w-0">
+              <div className="flex-1 min-w-0 space-y-2">
                 <a
                   href={data.songUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`block font-medium truncate hover:text-[var(--color-accent)] transition-colors text-sm ${GeistMono.className}`}
+                  className={`block font-bold truncate hover:text-green-500 transition-colors text-base md:text-lg ${GeistMono.className}`}
                 >
                   {data.title}
                 </a>
                 <p
-                  className={`text-sm truncate text-neutral-500 dark:text-neutral-400 ${GeistMono.className}`}
+                  className={`text-sm md:text-base truncate text-neutral-600 dark:text-neutral-400 ${GeistMono.className}`}
                 >
                   {data.artist}
+                </p>
+                <p
+                  className={`text-xs truncate text-neutral-500 dark:text-neutral-500 ${GeistMono.className}`}
+                >
+                  {data.album}
                 </p>
               </div>
             </div>
           ) : (
-            <div className="flex items-center justify-center space-x-2 py-4">
+            <div className="flex items-center justify-center space-x-3 py-8">
+              <Music className="w-6 h-6 text-neutral-400 dark:text-neutral-600" />
               <p
-                className={`text-neutral-600 dark:text-neutral-400 font-semibold`}
+                className={`text-neutral-600 dark:text-neutral-400 font-semibold ${GeistMono.className}`}
               >
                 {`Nothing Currently Playing (_　_|||)`}
               </p>
@@ -103,27 +109,31 @@ export function RecentlyPlayed() {
       scale={1.03}
       threshold={0.3}
     >
-      <div className="relative p-3 md:p-6 rounded-xl border border-neutral-200 dark:border-neutral-800 shadow-xs overflow-hidden">
-        <h2
-          className={`mb-4 text-sm font-medium text-neutral-500 dark:text-neutral-400 tracking-wide`}
-        >
-          RECENTLY PLAYED
-        </h2>
+      <div className="relative p-1 md:p-3 rounded-xl border border-neutral-200 dark:border-neutral-800 transition-all duration-300">
+        <div className="flex items-center mb-6 p-3 md:p-6">
+          <h2
+            className={`text-sm font-medium text-neutral-500 dark:text-neutral-400 tracking-wide ${GeistMono.className}`}
+          >
+            RECENTLY PLAYED
+          </h2>
+          <span className="flex-1"></span>
+          <Clock className="w-4 h-4 text-neutral-400 dark:text-neutral-600" />
+        </div>
 
         {data ? (
-          <div className="space-y-4">
+          <div className="space-y-1">
             {data?.map((track: any, index: number) => (
               <div
                 key={`${track.songUrl}-${track.playedAt}`}
-                className="flex items-center space-x-3 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-800/50 transition-colors"
+                className="flex items-center space-x-3 p-3 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800/50 transition-all duration-200"
               >
                 <span
-                  className={`text-xs text-neutral-400 dark:text-neutral-600 ${GeistMono.className}`}
+                  className={`text-xs text-neutral-400 dark:text-neutral-600 font-bold ${GeistMono.className}`}
                 >
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <img
-                  className="w-10 h-10 rounded-md shadow-sm"
+                  className="w-12 h-12 rounded-md"
                   src={track.albumArt}
                   alt={track.album}
                 />
@@ -132,7 +142,7 @@ export function RecentlyPlayed() {
                     href={track.songUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`block font-medium truncate hover:text-[var(--color-accent)] transition-colors text-sm`}
+                    className={`block font-medium truncate hover:text-green-500 transition-colors text-sm md:text-base`}
                   >
                     {track.title}
                   </a>
@@ -144,7 +154,7 @@ export function RecentlyPlayed() {
                       {track.artist}
                     </p>
                     <span
-                      className={`text-[8px] md:text-xs text-xs text-neutral-400 dark:text-neutral-600 ${GeistMono.className}`}
+                      className={`text-[10px] md:text-xs text-neutral-400 dark:text-neutral-600 ${GeistMono.className}`}
                     >
                       {new Date(track.playedAt).toLocaleTimeString([], {
                         hour: "2-digit",
@@ -169,11 +179,12 @@ const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 function CurrentlyPlayingSkeleton() {
   return (
-    <div className="flex items-center space-x-4">
-      <div className="w-14 h-14 rounded-lg bg-neutral-200 dark:bg-neutral-800 animate-pulse" />
-      <div className="flex-1 space-y-2">
-        <div className="h-4 rounded-md bg-neutral-200 dark:bg-neutral-800 animate-pulse w-3/4" />
-        <div className="h-3 rounded-md bg-neutral-200 dark:bg-neutral-800 animate-pulse w-1/2" />
+    <div className="flex items-center space-x-4 p-2">
+      <div className="w-16 h-16 md:w-20 md:h-20 rounded-lg bg-neutral-200 dark:bg-neutral-800 animate-pulse" />
+      <div className="flex-1 space-y-3">
+        <div className="h-5 rounded-md bg-neutral-200 dark:bg-neutral-800 animate-pulse w-3/4" />
+        <div className="h-4 rounded-md bg-neutral-200 dark:bg-neutral-800 animate-pulse w-1/2" />
+        <div className="h-3 rounded-md bg-neutral-200 dark:bg-neutral-800 animate-pulse w-2/5" />
       </div>
     </div>
   );
@@ -181,10 +192,13 @@ function CurrentlyPlayingSkeleton() {
 
 function RecentlyPlayedSkeleton() {
   return (
-    <div className="space-y-2">
+    <div className="space-y-3">
       {[...Array(5)].map((_, i) => (
-        <div key={i} className="flex items-center space-x-3 p-2">
-          <div className="w-10 h-10 rounded-md bg-neutral-200 dark:bg-neutral-800 animate-pulse" />
+        <div key={i} className="flex items-center space-x-3 p-3">
+          <div className="w-4 text-neutral-300 dark:text-neutral-700">
+            {String(i + 1).padStart(2, "0")}
+          </div>
+          <div className="w-12 h-12 rounded-md bg-neutral-200 dark:bg-neutral-800 animate-pulse" />
           <div className="flex-1 space-y-2">
             <div className="h-4 rounded-md bg-neutral-200 dark:bg-neutral-800 animate-pulse w-2/3" />
             <div className="h-3 rounded-md bg-neutral-200 dark:bg-neutral-800 animate-pulse w-1/2" />

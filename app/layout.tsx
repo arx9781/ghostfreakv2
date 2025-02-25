@@ -65,12 +65,11 @@ export default function RootLayout({
       >
         <body className="antialiased max-w-3xl mx-4 mt-4 lg:mx-auto text-base flex flex-col min-h-screen">
           <Preloader>
-            <div className="absolute top-0 left-0 w-full z-50">
-              <span
-                className={`dark:text-black text-white under-cons text-center font-bold font-mono block w-full ${GeistMono.className}`}
-              >
-                Website under construction
-              </span>
+            <div className="fixed top-0 left-0 right-0 w-full z-10 pointer-events-none">
+              <div className="feathered-blur bg-white/30 dark:bg-black/30 backdrop-blur-lg h-20 w-full border-b border-gray-100/20 dark:border-gray-800/20">
+                {/* Optional subtle gradient overlay for enhanced blur effect */}
+                <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent dark:from-white/5 dark:to-transparent"></div>
+              </div>
             </div>
             <main className="flex-auto min-w-0 mt-12 flex flex-col px-2 md:px-0">
               <div className="relative w-full">
