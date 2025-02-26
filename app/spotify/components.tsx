@@ -49,25 +49,25 @@ export function CurrentlyPlaying() {
 
         {data ? (
           data?.isPlaying ? (
-            <div className="flex items-center space-x-5">
+            <div className="flex items-center space-x-3">
               <div className="relative overflow-hidden rounded-md">
                 <img
-                  className="w-16 h-16 md:w-20 md:h-20 object-cover transform transition-transform duration-300 group-hover:scale-105"
+                  className="w-12 h-12 md:w-14 md:h-14 object-cover transform transition-transform duration-300 group-hover:scale-105"
                   src={data.albumArt}
                   alt={data.album}
                 />
               </div>
-              <div className="flex-1 min-w-0 space-y-2">
+              <div className="flex-1 min-w-0 flex flex-col">
                 <a
                   href={data.songUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`block font-bold truncate hover:text-green-500 transition-colors text-base md:text-lg ${GeistMono.className}`}
+                  className={`block font-semibold truncate hover:text-green-500 transition-colors text-xs md:text-base`}
                 >
                   {data.title}
                 </a>
                 <p
-                  className={`text-sm md:text-base truncate text-neutral-600 dark:text-neutral-400 ${GeistMono.className}`}
+                  className={`text-xs truncate text-neutral-600 dark:text-neutral-400 ${GeistMono.className}`}
                 >
                   {data.artist}
                 </p>
@@ -110,14 +110,14 @@ export function RecentlyPlayed() {
       threshold={0.3}
     >
       <div className="relative p-1 md:p-3 rounded-xl border border-neutral-200 dark:border-neutral-800 transition-all duration-300">
-        <div className="flex items-center mb-6 p-3 md:p-6">
+        <div className="flex items-center mb-1 p-3 md:p-6">
           <h2
             className={`text-sm font-medium text-neutral-500 dark:text-neutral-400 tracking-wide ${GeistMono.className}`}
           >
             RECENTLY PLAYED
           </h2>
           <span className="flex-1"></span>
-          <Clock className="w-4 h-4 text-neutral-400 dark:text-neutral-600" />
+          <Clock className="w-5 h-5 text-neutral-400 dark:text-neutral-600" />
         </div>
 
         {data ? (
@@ -125,7 +125,7 @@ export function RecentlyPlayed() {
             {data?.map((track: any, index: number) => (
               <div
                 key={`${track.songUrl}-${track.playedAt}`}
-                className="flex items-center space-x-3 p-3 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800/50 transition-all duration-200"
+                className="flex items-center space-y-6 space-x-3 p-3 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800/50 transition-all duration-200"
               >
                 <span
                   className={`text-xs text-neutral-400 dark:text-neutral-600 font-bold ${GeistMono.className}`}
@@ -133,36 +133,30 @@ export function RecentlyPlayed() {
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <img
-                  className="w-12 h-12 rounded-md"
+                  className="w-12 h-12 md:w-14 md:h-14 rounded-md"
                   src={track.albumArt}
                   alt={track.album}
                 />
-                <div className="flex-1 min-w-0">
+                <div className="flex-1 min-w-0 flex flex-col">
                   <a
                     href={track.songUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`block font-medium truncate hover:text-green-500 transition-colors text-sm md:text-base`}
+                    className={`block font-medium truncate hover:text-green-500 transition-colors text-xs md:text-base`}
                   >
                     {track.title}
                   </a>
 
-                  <div className="flex items-center justify-between">
-                    <p
-                      className={`text-sm truncate text-neutral-500 dark:text-neutral-400 ${GeistMono.className}`}
-                    >
-                      {track.artist}
-                    </p>
-                    <span
-                      className={`text-[10px] md:text-xs text-neutral-400 dark:text-neutral-600 ${GeistMono.className}`}
-                    >
-                      {new Date(track.playedAt).toLocaleTimeString([], {
-                        hour: "2-digit",
-                        minute: "2-digit",
-                        hour12: true,
-                      })}
-                    </span>
-                  </div>
+                  <p
+                    className={`text-xs truncate text-neutral-500 dark:text-neutral-400 ${GeistMono.className}`}
+                  >
+                    {track.artist}
+                  </p>
+                  <p
+                    className={`text-xs truncate text-neutral-500 dark:text-neutral-500 ${GeistMono.className}`}
+                  >
+                    {track.album}
+                  </p>
                 </div>
               </div>
             ))}

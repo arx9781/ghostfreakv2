@@ -21,100 +21,6 @@ function ArrowIcon() {
 export default function Footer() {
   return (
     <footer className="mt-auto">
-      <div
-        className={`flex flex-row space-x-2 md:space-x-6 py-4 border-y-1 border-neutral-200 dark:border-neutral-800 mt-8 ${GeistMono.className} text-sm`}
-      >
-        <AnimatedContent
-          distance={20}
-          direction="horizontal"
-          delay={0.2}
-          config={{ tension: 90, friction: 18 }}
-          initialOpacity={0.3}
-          scale={1.02}
-          threshold={0.1}
-        >
-          <a
-            href="https://instagram.com/arx9781"
-            target="_blank"
-            rel="noreferrer"
-            className="text-neutral-500 dark:text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-300 transition-colors duration-200 underline"
-          >
-            Instagram
-          </a>
-        </AnimatedContent>
-        <AnimatedContent
-          distance={20}
-          direction="horizontal"
-          delay={0.3}
-          config={{ tension: 90, friction: 18 }}
-          initialOpacity={0.3}
-          scale={1.02}
-          threshold={0.1}
-        >
-          <a
-            href="https://www.facebook.com/arx9781"
-            target="_blank"
-            rel="noreferrer"
-            className="text-neutral-500 dark:text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-300 transition-colors duration-200 underline"
-          >
-            Facebook
-          </a>
-        </AnimatedContent>
-        <AnimatedContent
-          distance={20}
-          direction="horizontal"
-          delay={0.4}
-          config={{ tension: 90, friction: 18 }}
-          initialOpacity={0.3}
-          scale={1.02}
-          threshold={0.1}
-        >
-          <a
-            href="https://threads.net/@arx9781"
-            target="_blank"
-            rel="noreferrer"
-            className="text-neutral-500 dark:text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-300 transition-colors duration-200 underline"
-          >
-            Threads
-          </a>
-        </AnimatedContent>
-        <AnimatedContent
-          distance={20}
-          direction="horizontal"
-          delay={0.1}
-          config={{ tension: 90, friction: 18 }}
-          initialOpacity={0.3}
-          scale={1.02}
-          threshold={0.1}
-        >
-          <a
-            href="https://x.com/morphinearc"
-            target="_blank"
-            rel="noreferrer"
-            className="text-neutral-500 dark:text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-300 transition-colors duration-200 underline"
-          >
-            X
-          </a>
-        </AnimatedContent>
-        <AnimatedContent
-          distance={20}
-          direction="horizontal"
-          delay={0.5}
-          config={{ tension: 90, friction: 18 }}
-          initialOpacity={0.3}
-          scale={1.02}
-          threshold={0.1}
-        >
-          <a
-            href="https://discord.gg/TM6Z2GRf"
-            target="_blank"
-            rel="noreferrer"
-            className="text-neutral-500 dark:text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-300 transition-colors duration-200 underline"
-          >
-            Discord
-          </a>
-        </AnimatedContent>
-      </div>
       <AnimatedContent
         distance={20}
         direction="vertical"
@@ -125,7 +31,7 @@ export default function Footer() {
         threshold={0.1}
       >
         <div className="max-w-3xl mx-0 md:mx-4 lg:mx-auto">
-          <div className="flex md:flex-row justify-between items-center pt-6 pb-8 gap-4">
+          <div className="flex md:flex-row justify-between items-center pt-10 pb-8 gap-4">
             <AnimatedContent
               distance={30}
               direction="horizontal"
