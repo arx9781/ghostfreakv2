@@ -60,7 +60,7 @@ export default function Page() {
         <div className="py-8 md:pt-16 pb-0 w-full">
           <div className="flex items-center gap-4 mb-2 md:mb-4">
             <span
-              className={`dark:text-white text-black font-bold md:text-4xl text-2xl block`}
+              className={`dark:text-white text-black font-bold md:text-4xl text-[28px] block`}
             >
               Aditya Roychoudhary
               <br />
@@ -73,7 +73,7 @@ export default function Page() {
               />
             </div>
           </div>
-          <p className="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed font-medium">
+          <p className="text-base text-justify md:text-left md:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed font-medium">
             — crafts design interfaces that merge human-centered metaphors with
             scalable systems. His work blends neo-brutalism with timeless
             minimalism, all within a refined monochromatic palette.
@@ -187,8 +187,44 @@ export default function Page() {
                           threshold={0.3}
                         >
                           <div
-                            className={`grid grid-cols-2 gap-2 py-4 border rounded-lg px-4 border-neutral-200 dark:border-neutral-800 mt-8 ${GeistMono.className} text-sm md:grid-cols-4 lg:grid-cols-6`}
+                            className={`md:gap-6 gap-3 py-4 border rounded-lg px-4 border-neutral-200 dark:border-neutral-800 mt-8 ${GeistMono.className} text-sm md:flex md:mx-2 md:flex-wrap md:items-start grid grid-cols-2 lg:grid-cols-6`}
                           >
+                            <AnimatedContent
+                              distance={20}
+                              direction="horizontal"
+                              delay={0.5}
+                              config={{ tension: 90, friction: 18 }}
+                              initialOpacity={0.3}
+                              scale={1.02}
+                              threshold={0.1}
+                            >
+                              <a
+                                href="https://x.com/morphinearc"
+                                target="_blank"
+                                rel="noreferrer"
+                                className="text-neutral-500 dark:text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-300 transition-colors duration-200 underline"
+                              >
+                                X
+                              </a>
+                            </AnimatedContent>
+                            <AnimatedContent
+                              distance={20}
+                              direction="horizontal"
+                              delay={0.6}
+                              config={{ tension: 90, friction: 18 }}
+                              initialOpacity={0.3}
+                              scale={1.02}
+                              threshold={0.1}
+                            >
+                              <a
+                                href="https://myanimelist.net/profile/arx9781"
+                                target="_blank"
+                                rel="noreferrer"
+                                className="text-neutral-500 dark:text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-300 transition-colors duration-200 underline"
+                              >
+                                MyAnimeList
+                              </a>
+                            </AnimatedContent>
                             <AnimatedContent
                               distance={20}
                               direction="horizontal"
@@ -205,24 +241,6 @@ export default function Page() {
                                 className="text-neutral-500 dark:text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-300 transition-colors duration-200 underline"
                               >
                                 Instagram
-                              </a>
-                            </AnimatedContent>
-                            <AnimatedContent
-                              distance={20}
-                              direction="horizontal"
-                              delay={0.3}
-                              config={{ tension: 90, friction: 18 }}
-                              initialOpacity={0.3}
-                              scale={1.02}
-                              threshold={0.1}
-                            >
-                              <a
-                                href="https://www.facebook.com/arx9781"
-                                target="_blank"
-                                rel="noreferrer"
-                                className="text-neutral-500 dark:text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-300 transition-colors duration-200 underline"
-                              >
-                                Facebook
                               </a>
                             </AnimatedContent>
                             <AnimatedContent
@@ -246,6 +264,24 @@ export default function Page() {
                             <AnimatedContent
                               distance={20}
                               direction="horizontal"
+                              delay={0.3}
+                              config={{ tension: 90, friction: 18 }}
+                              initialOpacity={0.3}
+                              scale={1.02}
+                              threshold={0.1}
+                            >
+                              <a
+                                href="https://www.facebook.com/arx9781"
+                                target="_blank"
+                                rel="noreferrer"
+                                className="text-neutral-500 dark:text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-300 transition-colors duration-200 underline"
+                              >
+                                Facebook
+                              </a>
+                            </AnimatedContent>
+                            <AnimatedContent
+                              distance={20}
+                              direction="horizontal"
                               delay={0.6}
                               config={{ tension: 90, friction: 18 }}
                               initialOpacity={0.3}
@@ -259,43 +295,6 @@ export default function Page() {
                                 className="text-neutral-500 dark:text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-300 transition-colors duration-200 underline"
                               >
                                 Discord
-                              </a>
-                            </AnimatedContent>
-
-                            <AnimatedContent
-                              distance={20}
-                              direction="horizontal"
-                              delay={0.6}
-                              config={{ tension: 90, friction: 18 }}
-                              initialOpacity={0.3}
-                              scale={1.02}
-                              threshold={0.1}
-                            >
-                              <a
-                                href="https://myanimelist.net/profile/arx9781"
-                                target="_blank"
-                                rel="noreferrer"
-                                className="text-neutral-500 dark:text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-300 transition-colors duration-200 underline"
-                              >
-                                MyAnimeList
-                              </a>
-                            </AnimatedContent>
-                            <AnimatedContent
-                              distance={20}
-                              direction="horizontal"
-                              delay={0.5}
-                              config={{ tension: 90, friction: 18 }}
-                              initialOpacity={0.3}
-                              scale={1.02}
-                              threshold={0.1}
-                            >
-                              <a
-                                href="https://x.com/morphinearc"
-                                target="_blank"
-                                rel="noreferrer"
-                                className="text-neutral-500 dark:text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-300 transition-colors duration-200 underline"
-                              >
-                                X
                               </a>
                             </AnimatedContent>
                           </div>

@@ -6,7 +6,7 @@ A portfolio and personal website built with Next.js.
 
 - **Next.js:** React framework for building performant web applications.
 - **MDX & Markdown:** For content creation, enabling JSX components within Markdown.
-- **Tailwind CSS v4:** For utility-first styling.
+- **Tailwind CSS:** For utility-first styling.
 - **Framer Motion:** For smooth animations and transitions (e.g., in the `Navbar`, see `app/components/nav.tsx`).
 - **Vercel:** Hosting, Speed Insights, and Analytics (see `app/layout.tsx` for integration).
 - **Spotify API:** Integration to display currently playing and recently played tracks (see `app/spotify/page.tsx` and related files).
@@ -24,8 +24,9 @@ A portfolio and personal website built with Next.js.
 
 **Navigation:**
 
-- **Home:** Displays a brief introduction, currently playing song, and latest blog posts (`app/page.tsx`).
+- **Home:** Displays a brief introduction and latest blog posts (`app/page.tsx`).
 - **Blog:** Archive of all blog posts (`app/blog/page.tsx`).
+- **Guestbook:** A guestbook section where users can leave their thoughts and feedback (`app/guestbook/page.tsx`).
 - **Spotify:** Detailed view of Spotify activity (`app/spotify/page.tsx`).
 
 **Getting Started:**
@@ -35,5 +36,7 @@ A portfolio and personal website built with Next.js.
 3.  Configure environment variables (especially for Spotify API integration, see `app/api/spotify/now-playing/route.ts` and `app/api/spotify/recently-played/route.ts`).
 4.  Run the development server: `npm run dev` or `yarn dev` or `pnpm dev`.
 
-**Assets Used**
-A lot of components used from [React Bits](https://reactbits.dev). I highly suggest checking it out!
+**Assets Used:**
+
+1. Animated Content component used from [React Bits](https://reactbits.dev). I highly suggest checking it out!
+2. Lucide React Icons used from [Lucide](https://lucide.dev).

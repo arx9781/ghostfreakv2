@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import "./global.css";
 
 import { GeistSans } from "geist/font/sans";
-import { GeistMono } from "geist/font/mono";
 
 import { usePathname } from "next/navigation";
 
@@ -15,6 +14,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import Footer from "./components/footer";
 import cx from "clsx";
 import { Preloader } from "./components/ui/Preloader";
+import { Navbar } from "./components/nav";
 
 export default function RootLayout({
   children,
@@ -86,6 +86,7 @@ export default function RootLayout({
               <Footer />
               <Analytics />
               <SpeedInsights />
+              <Navbar />
             </main>
           </Preloader>
         </body>

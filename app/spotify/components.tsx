@@ -84,7 +84,7 @@ export function CurrentlyPlaying() {
               <p
                 className={`text-neutral-600 dark:text-neutral-400 font-semibold ${GeistMono.className}`}
               >
-                {`Nothing Currently Playing (_　_|||)`}
+                {`Not currently playing (_　_|||)`}
               </p>
             </div>
           )

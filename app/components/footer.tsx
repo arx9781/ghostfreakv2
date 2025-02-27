@@ -31,7 +31,7 @@ export default function Footer() {
         threshold={0.1}
       >
         <div className="max-w-3xl mx-0 md:mx-4 lg:mx-auto">
-          <div className="flex md:flex-row justify-between items-center pt-10 pb-8 gap-4">
+          <div className="flex md:flex-row justify-between items-center py-10 gap-4">
             <AnimatedContent
               distance={30}
               direction="horizontal"

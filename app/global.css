@@ -228,6 +228,15 @@ table {
   );
 }
 
+.navbar-feathered-blur {
+  mask-image: linear-gradient(to top, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0));
+  -webkit-mask-image: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 1) 60%,
+    rgba(0, 0, 0, 0)
+  );
+}
+
 /* Glow effect for elements scrolling under the blur */
 .glow-scroll-area {
   position: relative;
