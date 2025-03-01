@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import { GeistMono } from "geist/font/mono";
 import AnimatedContent from "./ui/AnimatedContent";
 
@@ -19,6 +20,25 @@ function ArrowIcon() {
 }
 
 export default function Footer() {
+  const [currentTime, setCurrentTime] = useState(new Date());
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
+  const formattedTime = currentTime.toLocaleString("en-US", {
+    month: "short",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false,
+  });
+
   return (
     <footer className="mt-auto">
       <AnimatedContent
@@ -31,7 +51,7 @@ export default function Footer() {
         threshold={0.1}
       >
         <div className="max-w-3xl mx-0 md:mx-4 lg:mx-auto">
-          <div className="flex md:flex-row justify-between items-center py-10 gap-4">
+          <div className="flex md:flex-row justify-between items-end md:items-center mt-16 mb-16 md:mb-0 gap-4 border-t border-neutral-200 dark:border-neutral-800 pt-2">
             <AnimatedContent
               distance={30}
               direction="horizontal"
@@ -41,18 +61,21 @@ export default function Footer() {
               scale={1.05}
               threshold={0.2}
             >
-              <div className="flex flex-col md:flex-row items-start md:items-center space-x-0 md:space-x-2 md:order-1">
+              <div className="flex flex-row items-start md:items-center space-x-1 md:space-x-2 md:order-1">
                 <div className="flex items-center space-x-1">
-                  <div className="h-3 w-3 rounded-full bg-blue-500 animate-pulse mr-0.5" />
-                  <span className="text-neutral-600 dark:text-neutral-300 text-sm">
+                  <div className="h-2 w-2 md:h-3 md:w-3 rounded-full bg-blue-500 animate-pulse mr-0.5" />
+                  <span className="text-neutral-600 dark:text-neutral-300 text-[10px] md:text-sm">
                     All systems normal
                   </span>
                 </div>
-                <p className="text-neutral-500 text-sm mt-2 md:mt-0">
-                  © {new Date().getFullYear()} Aditya Roychoudhary. MIT License.
+                <p className="text-neutral-500 text-[10px] md:text-sm mt-0">
+                  © {new Date().getFullYear()}. MIT License.
                 </p>
               </div>
             </AnimatedContent>
+            <div className="text-neutral-500 text-[10px] md:text-sm font-semibold">
+              {formattedTime}
+            </div>
           </div>
         </div>
       </AnimatedContent>

@@ -7,6 +7,7 @@ import AnimatedContent from "./components/ui/AnimatedContent";
 import { CurrentlyPlaying } from "./spotify/components";
 import { ViewButton } from "./components/view-button";
 import ProjectCard from "./components/ProjectCard";
+import SectionHeader from "./components/SectionHeader";
 
 export const metadata: Metadata = {
   title: "Aditya Roychoudhary",
@@ -95,10 +96,7 @@ export default function Page() {
         <div className="relative">
           <div className="absolute inset-0 z-0 rounded-lg overflow-hidden"></div>
           <div className="space-y-8 relative z-10">
-            <div className="flex items-center mb-8">
-              <h1 className="text-3xl font-bold mr-4">Brief</h1>
-              <span className="flex-1 h-px bg-neutral-200 dark:bg-neutral-800 mt-[5px]"></span>
-            </div>
+            <SectionHeader title="Brief" />
 
             <div className="relative z-10">
               <div className="space-y-8">
@@ -320,10 +318,7 @@ export default function Page() {
         threshold={0.1}
       >
         <div>
-          <div className="flex items-center mb-8">
-            <h1 className="text-3xl font-bold mr-4">Spotify</h1>
-            <span className="flex-1 h-px bg-neutral-200 dark:bg-neutral-800 mt-[5px]"></span>
-          </div>
+          <SectionHeader title="Spotify" />
           <div>
             <CurrentlyPlaying />
           </div>
@@ -356,10 +351,7 @@ export default function Page() {
         threshold={0.3}
       >
         <div>
-          <div className="flex items-center mb-8">
-            <h1 className="text-3xl font-bold mr-4">Projects</h1>
-            <span className="flex-1 h-px bg-neutral-200 dark:bg-neutral-800 mt-[5px]"></span>
-          </div>
+          <SectionHeader title="Projects" />
           <div className="grid grid-cols-1 gap-6">
             {projects.map((project, index) => (
               <AnimatedContent
@@ -390,10 +382,7 @@ export default function Page() {
         threshold={0.3}
       >
         <div>
-          <div className="flex items-center mb-8">
-            <h1 className="text-3xl font-bold mr-4">Blogs</h1>
-            <span className="flex-1 h-px bg-neutral-200 dark:bg-neutral-800 mt-[5px]"></span>
-          </div>
+          <SectionHeader title="Posts" />
           <div>
             <BlogPosts />
           </div>

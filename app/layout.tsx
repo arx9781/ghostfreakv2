@@ -14,6 +14,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import Footer from "./components/footer";
 import cx from "clsx";
 import { Preloader } from "./components/ui/Preloader";
+import ScrollProgressBar from "./components/ScrollProgressBar";
 import { Navbar } from "./components/nav";
 
 export default function RootLayout({
@@ -87,6 +88,7 @@ export default function RootLayout({
               <Analytics />
               <SpeedInsights />
               <Navbar />
+              <ScrollProgressBar />
             </main>
           </Preloader>
         </body>

@@ -25,9 +25,7 @@ export default function Page() {
 
         <p className="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed font-medium mb-12 max-w-2xl">
           A space where I share insights, guides, and explorations in software
-          design and development. Here, you'll find articles on design
-          principles, useful tools, and practical tips to enhance your workflow
-          and create better software.
+          design and development.
         </p>
       </AnimatedContent>
       <div className="absolute inset-0 bg-[var(--color-bg-pattern-light)] dark:bg-[var(--color-bg-pattern-dark)] [background-size:16px_16px] opacity-10 -z-10" />

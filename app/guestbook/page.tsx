@@ -17,11 +17,8 @@ export default function Guestbook() {
         </div>
 
         <p className="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed font-medium mb-12 max-w-2xl">
-          A guestbook section where you can leave your thoughts and feedback.{" "}
-          Please be respectful and civil, profanity and hate speech will{" "}
-          <span className="text-red-500 dark:text-red-600 font-semibold underline">
-            not be tolerated.
-          </span>
+          A guestbook section where you can leave your thoughts, messages and/or
+          a feedback regarding anything.
         </p>
       </AnimatedContent>
     </div>
