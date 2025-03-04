@@ -88,7 +88,7 @@ export default function RootLayout({
               <Analytics />
               <SpeedInsights />
               <Navbar />
-              <ScrollProgressBar />
+              {/* <ScrollProgressBar /> */}
             </main>
           </Preloader>
         </body>
