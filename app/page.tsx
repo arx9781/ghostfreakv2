@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { GeistMono } from "geist/font/mono";
 
 import { BlogPosts } from "app/components/posts";
 import AnimatedContent from "./components/ui/AnimatedContent";
 import { CurrentlyPlaying } from "./spotify/components";
 import { ViewButton } from "./components/view-button";
 import ProjectCard from "./components/ProjectCard";
-import SectionHeader from "./components/SectionHeader";
+import { SocialLinks } from "./components/SocialLinks";
 
 export const metadata: Metadata = {
   title: "Aditya Roychoudhary",
@@ -47,57 +45,57 @@ export default function Page() {
   ];
 
   return (
-    <section className="space-y-12 md:space-y-20 max-w-4xl mx-auto">
+    <div className="min-h-screen max-w-4xl mx-auto py-8 md:py-16">
       {/* Hero Section */}
-      <AnimatedContent
-        distance={150}
-        direction="horizontal"
-        reverse={true}
-        config={{ tension: 80, friction: 20 }}
-        initialOpacity={0.2}
-        scale={1.1}
-        threshold={0.2}
-      >
-        <div className="py-8 md:pt-16 pb-0 w-full">
-          <div className="flex items-center gap-4 mb-2 md:mb-4">
-            <span
-              className={`dark:text-white text-black font-bold md:text-4xl text-[28px] block`}
-            >
-              Aditya Roychoudhary
-              <br />
-            </span>
-            <div className="relative group w-12 h-12 rounded-full overflow-hidden">
-              <img
-                className="object-cover md:w-full md:h-full grayscale group-hover:grayscale-0 transition-all duration-300 cursor-crosshair"
-                src="https://github.com/arx9781.png"
-                alt="a circular profile picture"
-              />
+      <section className="mb-16">
+        <AnimatedContent
+          distance={150}
+          direction="horizontal"
+          reverse={true}
+          config={{ tension: 80, friction: 20 }}
+          initialOpacity={0.2}
+          scale={1.1}
+          threshold={0.2}
+        >
+          <div className="py-4 w-full">
+            <div className="flex items-center gap-4 mb-4">
+              <span className="dark:text-white text-black font-bold md:text-4xl text-[28px] block">
+                Aditya Roychoudhary
+              </span>
+              <div className="relative group w-12 h-12 rounded-full overflow-hidden">
+                <img
+                  className="object-cover md:w-full md:h-full grayscale group-hover:grayscale-0 transition-all duration-300 cursor-crosshair"
+                  src="https://github.com/arx9781.png"
+                  alt="a circular profile picture"
+                />
+              </div>
             </div>
+            <p className="text-base text-justify md:text-left md:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed font-medium">
+              — crafts design interfaces that merge human-centered metaphors with
+              scalable systems. His work blends neo-brutalism with timeless
+              minimalism, all within a refined monochromatic palette.
+            </p>
+            <SocialLinks/>
           </div>
-          <p className="text-base text-justify md:text-left md:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed font-medium">
-            — crafts design interfaces that merge human-centered metaphors with
-            scalable systems. His work blends neo-brutalism with timeless
-            minimalism, all within a refined monochromatic palette.
-          </p>
-        </div>
-      </AnimatedContent>
-
-      {/* About Section */}
-      <AnimatedContent
-        distance={80}
-        direction="horizontal"
-        reverse={true}
-        delay={0.3}
-        config={{ tension: 90, friction: 18 }}
-        initialOpacity={0.3}
-        scale={1.07}
-        threshold={0.2}
-      >
-        <div className="relative">
-          <div className="absolute inset-0 z-0 rounded-lg overflow-hidden"></div>
-          <div className="space-y-8 relative z-10">
-            <SectionHeader title="Brief" />
-
+        </AnimatedContent>
+      </section>
+      {/* Brief Section */}
+      {/* <section className="mb-16">
+        <AnimatedContent
+          distance={80}
+          direction="horizontal"
+          reverse={true}
+          delay={0.3}
+          config={{ tension: 90, friction: 18 }}
+          initialOpacity={0.3}
+          scale={1.07}
+          threshold={0.2}
+        >
+          <div className="flex items-center mb-6">
+            <h2 className="text-2xl font-bold mr-4">Brief</h2>
+            <span className="flex-1 h-px bg-neutral-200 dark:bg-neutral-800 mt-[5px]"></span>
+          </div>
+          <div className="space-y-8">
             <div className="relative z-10">
               <div className="space-y-8">
                 <div className="group">
@@ -185,7 +183,7 @@ export default function Page() {
                           threshold={0.3}
                         >
                           <div
-                            className={`md:gap-6 gap-3 py-4 border rounded-lg px-4 border-neutral-200 dark:border-neutral-800 mt-8 ${GeistMono.className} text-sm md:flex md:mx-2 md:flex-wrap md:items-start grid grid-cols-2 lg:grid-cols-6`}
+                            className={`md:gap-6 gap-3 py-4 px-4 border rounded-lg border-neutral-200 dark:border-neutral-800 mt-8 ${GeistMono.className} text-sm md:flex md:flex-wrap md:items-start grid grid-cols-2 lg:grid-cols-6 mb-6`}
                           >
                             <AnimatedContent
                               distance={20}
@@ -304,105 +302,70 @@ export default function Page() {
               </div>
             </div>
           </div>
-        </div>
-      </AnimatedContent>
+        </AnimatedContent>
+        </section> */}
 
-      {/* Spotify Section */}
-      <AnimatedContent
-        distance={50}
-        direction="vertical"
-        delay={0.2}
-        config={{ tension: 100, friction: 15 }}
-        initialOpacity={0}
-        scale={1.05}
-        threshold={0.1}
-      >
-        <div>
-          <SectionHeader title="Spotify" />
-          <div>
-            <CurrentlyPlaying />
+
+       {/* Now Playing Section */}
+      <section className="mb-16">
+        <AnimatedContent
+          distance={80}
+          direction="vertical"
+          delay={0.4}
+          config={{ tension: 120, friction: 25 }}
+          initialOpacity={0}
+          scale={1.02}
+          threshold={0.3}
+        >
+          <div className="flex items-center mb-6">
+            <h2 className="text-2xl font-bold mr-4">Now Playing</h2>
+            <span className="flex-1 h-px bg-neutral-200 dark:bg-neutral-800 mt-[5px]"></span>
           </div>
-          <AnimatedContent
-            distance={100}
-            direction="vertical"
-            delay={0.4}
-            config={{ tension: 110, friction: 20 }}
-            initialOpacity={0}
-            scale={1.03}
-            threshold={0.3}
-          >
-            <div className="flex items-center justify-end mt-6">
-              <Link href="/spotify">
-                <ViewButton>View music</ViewButton>
-              </Link>
-            </div>
-          </AnimatedContent>
-        </div>
-      </AnimatedContent>
+          <CurrentlyPlaying />
+        </AnimatedContent>
+      </section>
 
-      {/* Projects Created */}
-      <AnimatedContent
-        distance={100}
-        direction="vertical"
-        delay={0.4}
-        config={{ tension: 110, friction: 20 }}
-        initialOpacity={0}
-        scale={1.03}
-        threshold={0.3}
-      >
-        <div>
-          <SectionHeader title="Projects" />
-          <div className="grid grid-cols-1 gap-6">
-            {projects.map((project, index) => (
-              <AnimatedContent
-                key={index}
-                distance={50}
-                direction="vertical"
-                delay={0.1 * index}
-                config={{ tension: 110, friction: 20 }}
-                initialOpacity={0}
-                scale={1.03}
-                threshold={0.3}
-              >
-                <ProjectCard {...project} />
-              </AnimatedContent>
+      {/* Projects Section */}
+      <section className="mb-16">
+        <AnimatedContent
+          distance={40}
+          direction="vertical"
+          delay={0.2}
+          config={{ tension: 100, friction: 15 }}
+          initialOpacity={0}
+          scale={1.05}
+          threshold={0.1}
+        >
+          <div className="flex items-center mb-6">
+            <h2 className="text-2xl font-bold mr-4">Projects</h2>
+            <span className="flex-1 h-px bg-neutral-200 dark:bg-neutral-800 mt-[5px]"></span>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {projects.map((project) => (
+              <ProjectCard key={project.title} {...project} />
             ))}
           </div>
-        </div>
-      </AnimatedContent>
+        </AnimatedContent>
+      </section>
 
       {/* Blog Section */}
-      <AnimatedContent
-        distance={100}
-        direction="vertical"
-        delay={0.4}
-        config={{ tension: 110, friction: 20 }}
-        initialOpacity={0}
-        scale={1.03}
-        threshold={0.3}
-      >
-        <div>
-          <SectionHeader title="Posts" />
-          <div>
-            <BlogPosts />
+      <section className="mb-16">
+        <AnimatedContent
+          distance={60}
+          direction="vertical"
+          delay={0.3}
+          config={{ tension: 110, friction: 20 }}
+          initialOpacity={0}
+          scale={1.03}
+          threshold={0.2}
+        >
+          <div className="flex items-center mb-6">
+            <h2 className="text-2xl font-bold mr-4">Writing</h2>
+            <span className="flex-1 h-px bg-neutral-200 dark:bg-neutral-800 mt-[5px]"></span>
           </div>
-          <AnimatedContent
-            distance={100}
-            direction="vertical"
-            delay={0.4}
-            config={{ tension: 110, friction: 20 }}
-            initialOpacity={0}
-            scale={1.03}
-            threshold={0.3}
-          >
-            <div className="flex items-center justify-end mt-6">
-              <Link href="/blog">
-                <ViewButton>View blogs</ViewButton>
-              </Link>
-            </div>
-          </AnimatedContent>
-        </div>
-      </AnimatedContent>
-    </section>
+          <BlogPosts />
+        </AnimatedContent>
+      </section>
+    </div>
   );
 }

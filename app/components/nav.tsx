@@ -20,7 +20,6 @@ const navItems = {
 export function Navbar() {
   let pathname = usePathname() || "/";
 
-  // Preserving your existing blog path handling
   if (pathname.includes("/blog/")) {
     pathname = "/blog";
   }

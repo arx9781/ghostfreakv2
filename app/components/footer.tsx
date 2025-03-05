@@ -50,21 +50,43 @@ export default function Footer() {
         threshold={0.1}
       >
         <div className="max-w-3xl mx-0 md:mx-4 lg:mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center space-y-4 md:space-y-0">
-            <div className="flex flex-col md:flex-row items-start md:items-center space-y-2 md:space-y-0 md:space-x-4">
+          {/* Desktop view */}
+          <div className="hidden md:flex md:flex-row justify-between items-center">
+            <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-2">
                 <div className="h-2 w-2 rounded-full bg-blue-500 animate-pulse" />
                 <span className="text-neutral-600 dark:text-neutral-300 text-sm">
                   All systems normal
                 </span>
               </div>
-              <p className="text-neutral-500 text-sm mt-0 md:ml-4">
+              <p className="text-neutral-500 text-sm">
                 © {new Date().getFullYear()}. MIT License.
               </p>
             </div>
-            <div className="text-neutral-500 text-sm font-semibold hidden md:block">
+            <div className="text-neutral-500 text-sm font-semibold">
               {formattedTime}
             </div>
+          </div>
+
+          {/* Mobile view */}
+          <div className="flex md:hidden flex-col space-y-4">
+            {/* First row with system status and time */}
+            <div className="flex justify-between items-center">
+              <div className="flex items-center space-x-2">
+                <div className="h-2 w-2 rounded-full bg-blue-500 animate-pulse" />
+                <span className="text-neutral-600 dark:text-neutral-300 text-sm">
+                  All systems normal
+                </span>
+              </div>
+              <div className="text-neutral-500 text-sm font-semibold">
+                {formattedTime}
+              </div>
+            </div>
+
+            {/* Second row with copyright */}
+            <p className="text-neutral-500 text-sm">
+              © {new Date().getFullYear()}. MIT License.
+            </p>
           </div>
         </div>
       </AnimatedContent>

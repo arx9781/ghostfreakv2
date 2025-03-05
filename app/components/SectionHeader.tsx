@@ -1,8 +1,10 @@
-export default function SectionHeader({ title }) {
+const SectionHeader = ({ title }: { title: string }) => {
   return (
-    <div className="flex items-center mb-8">
-      <h1 className="text-3xl font-bold mr-4">{title}</h1>
-      <span className="flex-1 h-px bg-neutral-200 dark:bg-neutral-800 mt-[5px]"></span>
+    <div className="flex items-center space-x-4 mb-8">
+      <h2 className="text-2xl font-bold tracking-tight">{title}</h2>
+      <div className="flex-grow h-px bg-gradient-to-r from-neutral-200 dark:from-neutral-800 to-transparent" />
     </div>
   );
-}
+};
+
+export default SectionHeader;
