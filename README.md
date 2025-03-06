@@ -13,10 +13,10 @@ a personal website, consisting of a minimal and monochromatic design.
 
 ## Resources
 
-Animated Content component from [React Bits](https://reactbits.dev) <br>
-Icons from [Lucide](https://lucide.dev)
+1. Animated Content component from [React Bits](https://reactbits.dev)
+2. Icons from [Lucide](https://lucide.dev)
 
 ## Miscs.
 
-Draws a lot of design queues from <b>Vercel®</b>, which just happens to be my favourite design system and styling aswell. <br>
-Inspiration for the Guestbook Page comes from [asrvd](https://github.com/asrvd). He also makes some other cool stuff, check him out!
+1. Draws a lot of design queues from <b>Vercel®</b>, which just happens to be my favourite design system and styling aswell.
+2. Inspiration for the Guestbook Page comes from [asrvd](https://github.com/asrvd). He also makes some other cool stuff, check him out!

@@ -2,7 +2,6 @@ import Link from "next/link";
 import { GeistMono } from "geist/font/mono";
 import { formatDate } from "app/blog/utils";
 import { getBlogPosts } from "app/blog/utils";
-import AnimatedContent from "../ui/constants/AnimatedContent";
 
 export function BlogPosts() {
   let allPosts = getBlogPosts();
