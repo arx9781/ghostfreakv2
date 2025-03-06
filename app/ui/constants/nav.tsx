@@ -8,7 +8,7 @@ import {
   RssIcon,
   MessageSquareQuote,
 } from "lucide-react";
-import AnimatedContent from "./ui/AnimatedContent";
+import AnimatedContent from "./AnimatedContent";
 
 const navItems = {
   "/": { name: "Home", icon: LucideHash },

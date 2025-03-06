@@ -1,42 +1,22 @@
-## adityarych.in
+# rych.in
 
-A portfolio and personal website built with Next.js.
+a personal website, consisting of a minimal and monochromatic design.
 
-**Tech Stack:**
+## Tech Stack
 
-- **Next.js:** React framework for building performant web applications.
-- **MDX & Markdown:** For content creation, enabling JSX components within Markdown.
-- **Tailwind CSS:** For utility-first styling.
-- **Framer Motion:** For smooth animations and transitions (e.g., in the `Navbar`, see `app/components/nav.tsx`).
-- **Vercel:** Hosting, Speed Insights, and Analytics (see `app/layout.tsx` for integration).
-- **Spotify API:** Integration to display currently playing and recently played tracks (see `app/spotify/page.tsx` and related files).
-- **`sugar-high`:** For syntax highlighting in code blocks (see `app/components/mdx.tsx`).
-- **`clsx` and `tailwind-merge`:** For conditional styling and Tailwind class management.
-- **`useSWR`:** For data fetching in React components (see `app/spotify/components.tsx`).
+- Next.js (TS Framework of choice)
+- Tailwind CSS (For styling)
+- TypeScript (Type safety which <b>pretty important!</b>)
+- Vercel (For hosting)
+- Supabase (For database & authentication)
+- Spotify API (For now playing & recently played)
 
-**Key Features:**
+## Resources
 
-- **Blog:** Dynamically generated from MDX files (see `app/blog/[slug]/page.tsx` and `app/blog/utils.ts`).
-- **Spotify Integration:** Displays current and recent listening activity.
-- **SEO Optimized:** Sitemap (`app/sitemap.ts`), robots.txt (`app/robots.ts`), and dynamic OG images (`app/og/route.tsx`).
-- **RSS Feed:** Available at `/rss` (`app/rss/route.ts`).
-- **Customizable Theme:** Tailwind CSS with dark mode support (see `app/global.css`).
+Animated Content component from [React Bits](https://reactbits.dev) <br>
+Icons from [Lucide](https://lucide.dev)
 
-**Navigation:**
+## Miscs.
 
-- **Home:** Displays a brief introduction and latest blog posts (`app/page.tsx`).
-- **Blog:** Archive of all blog posts (`app/blog/page.tsx`).
-- **Guestbook:** A guestbook section where users can leave their thoughts and feedback (`app/guestbook/page.tsx`).
-- **Spotify:** Detailed view of Spotify activity (`app/spotify/page.tsx`).
-
-**Getting Started:**
-
-1.  Clone the repository.
-2.  Install dependencies: `npm install` or `yarn install` or `pnpm install`.
-3.  Configure environment variables (especially for Spotify API integration, see `app/api/spotify/now-playing/route.ts` and `app/api/spotify/recently-played/route.ts`).
-4.  Run the development server: `npm run dev` or `yarn dev` or `pnpm dev`.
-
-**Assets Used:**
-
-1. Animated Content component used from [React Bits](https://reactbits.dev). I highly suggest checking it out!
-2. Lucide React Icons used from [Lucide](https://lucide.dev).
+Draws a lot of design queues from <b>Vercel®</b>, which just happens to be my favourite design system and styling aswell. <br>
+Inspiration for the Guestbook Page comes from [asrvd](https://github.com/asrvd). He also makes some other cool stuff, check him out!

@@ -11,11 +11,11 @@ import { usePathname } from "next/navigation";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
-import Footer from "./components/footer";
+import Footer from "./ui/constants/footer";
 import cx from "clsx";
-import { Preloader } from "./components/ui/Preloader";
-import ScrollProgressBar from "./components/ScrollProgressBar";
-import { Navbar } from "./components/nav";
+import { Preloader } from "./ui/constants/Preloader";
+import ScrollProgressBar from "./ui/modules/ScrollProgressBar";
+import { Navbar } from "./ui/constants/nav";
 
 export default function RootLayout({
   children,

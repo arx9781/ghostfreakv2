@@ -1,7 +1,7 @@
-import { BlogPosts } from "app/components/posts";
-import { BackButton } from "app/components/back-button";
+import { BlogPosts } from "app/ui/providers/posts";
+import { BackButton } from "app/ui/components/back-button";
 
-import AnimatedContent from "app/components/ui/AnimatedContent";
+import AnimatedContent from "app/ui/constants/AnimatedContent";
 
 export const metadata = {
   title: "Blogs",

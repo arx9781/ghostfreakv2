@@ -1,5 +1,5 @@
-import AnimatedContent from "./ui/AnimatedContent";
 import { GeistMono } from "geist/font/mono";
+import AnimatedContent from "../constants/AnimatedContent";
 
 export function SocialLinks() {
   return (

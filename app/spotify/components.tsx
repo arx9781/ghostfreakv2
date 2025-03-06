@@ -2,22 +2,32 @@
 
 import { GeistMono } from "geist/font/mono";
 import { Disc3, PauseCircle, DiscAlbum, Music, UserRound } from "lucide-react";
-import AnimatedContent from "app/components/ui/AnimatedContent";
+import AnimatedContent from "app/ui/constants/AnimatedContent";
 import useSWR from "swr";
 
 export function CurrentlyPlaying() {
-  const { data, isLoading } = useSWR("/api/spotify/now-playing?t=${Date.now()}", fetcher, {
-    refreshInterval: 1000,
-    revalidateOnFocus: false,
-  });
+  const { data, isLoading } = useSWR(
+    "/api/spotify/now-playing?t=${Date.now()}",
+    fetcher,
+    {
+      refreshInterval: 1000,
+      revalidateOnFocus: false,
+    }
+  );
   if (isLoading) return <CurrentlyPlayingSkeleton />;
   return (
     <div className="block relative overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/50 transition-all duration-300">
       <div className="p-3">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center space-x-2">
-            {data?.isPlaying ? <Disc3 className="w-4 h-4 animate-spin" /> : <PauseCircle className="w-4 h-4" />}
-            <span className={`text-xs text-neutral-500 tracking-wide ${GeistMono.className}`}>
+            {data?.isPlaying ? (
+              <Disc3 className="w-4 h-4 animate-spin" />
+            ) : (
+              <PauseCircle className="w-4 h-4" />
+            )}
+            <span
+              className={`text-xs text-neutral-500 tracking-wide ${GeistMono.className}`}
+            >
               {data?.isPlaying ? "LIVE" : "OFFLINE"}
             </span>
           </div>
@@ -40,10 +50,14 @@ export function CurrentlyPlaying() {
               >
                 {data.title}
               </a>
-              <p className={`text-xs md:text-sm text-neutral-600 dark:text-neutral-400 truncate ${GeistMono.className}`}>
+              <p
+                className={`text-xs md:text-sm text-neutral-600 dark:text-neutral-400 truncate ${GeistMono.className}`}
+              >
                 {data.artist}
               </p>
-              <p className={`text-xs md:text-sm text-neutral-600 dark:text-neutral-400 truncate ${GeistMono.className}`}>
+              <p
+                className={`text-xs md:text-sm text-neutral-600 dark:text-neutral-400 truncate ${GeistMono.className}`}
+              >
                 {data.album}
               </p>
             </div>
@@ -108,13 +122,17 @@ export function RecentlyPlayed() {
                   </div>
                   <div>
                     {/* <UserRound className="w-4 h-4 text-neutral-400" /> */}
-                    <p className={`text-xs md:text-sm text-neutral-600 dark:text-neutral-400 truncate ${GeistMono.className}`}>
+                    <p
+                      className={`text-xs md:text-sm text-neutral-600 dark:text-neutral-400 truncate ${GeistMono.className}`}
+                    >
                       {track.artist}
                     </p>
                   </div>
                   <div className="flex items-center space-x-2 mt-1">
                     {/* <DiscAlbum className="w-4 h-4 text-neutral-400" /> */}
-                    <p className={`text-xs md:text-sm text-neutral-600 dark:text-neutral-400 truncate ${GeistMono.className}`}>
+                    <p
+                      className={`text-xs md:text-sm text-neutral-600 dark:text-neutral-400 truncate ${GeistMono.className}`}
+                    >
                       {track.album}
                     </p>
                   </div>
@@ -133,8 +151,8 @@ function RecentlyPlayedSkeleton() {
   return (
     <div className="space-y-4">
       {[...Array(4)].map((_, i) => (
-        <div 
-          key={i} 
+        <div
+          key={i}
           className="p-4 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/50"
         >
           <div className="flex items-start space-x-4">

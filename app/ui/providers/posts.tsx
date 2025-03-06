@@ -2,7 +2,7 @@ import Link from "next/link";
 import { GeistMono } from "geist/font/mono";
 import { formatDate } from "app/blog/utils";
 import { getBlogPosts } from "app/blog/utils";
-import AnimatedContent from "./ui/AnimatedContent";
+import AnimatedContent from "../ui/constants/AnimatedContent";
 
 export function BlogPosts() {
   let allPosts = getBlogPosts();
@@ -11,7 +11,9 @@ export function BlogPosts() {
     <div className="grid grid-cols-1 gap-4">
       {allPosts
         .sort((a, b) => {
-          if (new Date(a.metadata.publishedAt) > new Date(b.metadata.publishedAt)) {
+          if (
+            new Date(a.metadata.publishedAt) > new Date(b.metadata.publishedAt)
+          ) {
             return -1;
           }
           return 1;
@@ -25,11 +27,15 @@ export function BlogPosts() {
                      transition-all duration-300"
           >
             <div className="flex flex-col h-full">
-              <h3 className="text-lg font-medium mb-2 group-hover:text-neutral-800 
-                           dark:group-hover:text-neutral-200 transition-colors">
+              <h3
+                className="text-lg font-medium mb-2 group-hover:text-neutral-800 
+                           dark:group-hover:text-neutral-200 transition-colors"
+              >
                 {post.metadata.title}
               </h3>
-              <p className={`text-sm text-neutral-500 mb-2 ${GeistMono.className}`}>
+              <p
+                className={`text-sm text-neutral-500 mb-2 ${GeistMono.className}`}
+              >
                 {formatDate(post.metadata.publishedAt, false)}
               </p>
               <p className="text-sm text-neutral-600 dark:text-neutral-400 line-clamp-2">

@@ -6,8 +6,8 @@ import { User } from "@supabase/supabase-js";
 import { GeistMono } from "geist/font/mono";
 import { Loader2 } from "lucide-react";
 
-import AnimatedContent from "app/components/ui/AnimatedContent";
-import { BackButton } from "app/components/back-button";
+import AnimatedContent from "app/ui/constants/AnimatedContent";
+import { BackButton } from "app/ui/components/back-button";
 
 // export const metadata = {
 //   title: "Guestbook",

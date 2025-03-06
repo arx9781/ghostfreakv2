@@ -1,7 +1,7 @@
 import { CurrentlyPlaying, RecentlyPlayed } from "./components";
-import { BackButton } from "app/components/back-button";
+import { BackButton } from "app/ui/components/back-button";
 import { GeistMono } from "geist/font/mono";
-import AnimatedContent from "app/components/ui/AnimatedContent";
+import AnimatedContent from "app/ui/constants/AnimatedContent";
 
 export const metadata = {
   title: "Spotify Stats",
